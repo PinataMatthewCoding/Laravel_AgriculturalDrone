@@ -18,7 +18,7 @@ class Drone extends Model
         "playload_cap",
         "max_speed",
     ];
-    // CREATE DRONES
+    // CREATE  AND UPDATE DRONES
     public static function store($request, $id=null){
         $drone = $request->only(
             [
