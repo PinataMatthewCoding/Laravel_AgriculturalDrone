@@ -11,56 +11,40 @@ use Illuminate\Http\Request;
 
 class LocationController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    // DISPLAY A LISTING OF THER RESOURCE
     public function index()
     {
-        //
         $location =Location::all();
         $location=LocationResource::collection($location);
-        return response()->json(['success'=>true,'location'=>$location],200);
+        return response()->json(["data"=>true, "location"=>$location],200);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+    // STORE A NEWLY CREATED RESOURCE IN STORAGE.
     public function store(LocationRequest $request)
     {
-        //
         $location =Location::store($request);
-        return response()->json(['success'=>true,'location'=>$location],200);
-
+        return response()->json(["data"=>true, "location"=>$location],200);
     }
 
-    /**
-     * Display the specified resource.
-     */
+    // DISPLAY THE SPECIFIED RESOURCE.
     public function show(string $id)
     {
-        //
         $location =Location::find($id);
-        return response()->json(['success'=>true,'location'=>$location],200);
+        return response()->json(["data"=>true, "location"=>$location],200);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
+    // UPDATE THE SPECIFIED RESOURCE IN STORAGE.
     public function update(LocationRequest $request, string $id)
     {
-        //
         $location =Location::store($request,$id);
         $location = new LocationShowResource($location);
-        return response()->json(['success'=>true,'location'=>$location],200);
+        return response()->json(["data"=>true, "location"=>$location],200);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+    // REMOVE THE SPECIFIED RESOURCE FROM STORAGE.
     public function destroy(string $id)
     {
-        //
         $location =Location::find($id)->delete();
-        return response()->json(['success'=>true,'location'=>"delete success"]);
+        return response()->json(["data"=>true, "location"=>"delete successfully"]);
     }
 }

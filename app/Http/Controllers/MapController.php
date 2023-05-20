@@ -26,10 +26,10 @@ class MapController extends Controller
     public function show(string $id)
     {
        $map = Map::find($id);
-       $map = new ShowMapResource($map);
         if(!$map){
-            return response()->json(["maps"=>"not found",404]);
+           return response()->json(["maps"=>"not found",404]);
         }
+        $map = new ShowMapResource($map);
         return response()->json(["data"=>true, "maps" =>$map],200);
     }
 

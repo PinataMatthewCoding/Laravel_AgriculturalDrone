@@ -5,21 +5,22 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Map extends Model
+class Province extends Model
 {
     use HasFactory;
     protected $fillable = [
-        "description",
+        "name",
+        "map_id"
     ];
-
-    // CREATE  AND UPDATE MAPS
+    // CREATE  AND UPDATE PROVINCE
     public static function store($request, $id=null){
-        $map = $request->only(
+        $province = $request->only(
             [
-                "description",
+                "name",
+                "map_id",
             ]
         );
-        $map= self::updateOrcreate(["id"=>$id],$map);
-        return $map;
+        $province= self::updateOrcreate(["id"=>$id],$province);
+        return $province;
     }
 }
