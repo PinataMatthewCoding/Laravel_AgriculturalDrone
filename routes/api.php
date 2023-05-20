@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\LocationController;
 use App\Http\Controllers\DroneController;
+use App\Http\Controllers\ImageController;
 use App\Http\Controllers\MapController;
 use App\Http\Controllers\ProvinceController;
 use Illuminate\Http\Request;
@@ -47,3 +48,9 @@ Route::post("/province", [ProvinceController::class, "store"]);
 Route::get("/province/{id}", [ProvinceController::class, "show"]);
 Route::put("/province/{id}", [ProvinceController::class, "update"]);
 Route::delete("/province/{id}", [ProvinceController::class, "destroy"]);
+// API ROUTE OF IMAGE
+Route::get("/images", [ImageController::class, "index"]);
+Route::post("/image", [ImageController::class, "store"]);
+Route::get("/image/{id}", [ImageController::class, "show"]);
+Route::put("/image/{id}", [ImageController::class, "update"]);
+Route::delete("/image/{id}", [ImageController::class, "destroy"]);
