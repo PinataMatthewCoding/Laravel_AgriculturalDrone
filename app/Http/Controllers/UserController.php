@@ -18,24 +18,16 @@ class UserController extends Controller
         return response()->json(["data"=>true ,"users"=>$user], 200);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+    // STORE A NEWLY CREATED RESOURCE IN STORAGE.
     public function store(StoreUserRequest $request)
     {
-        //
-        
         $user = User::store($request);
         return response()->json(["data"=>true ,"users"=>$user], 200);
-        
     }
 
-    /**
-     * Display the specified resource.
-     */
+    // DISPLAY THE SPECIFIED RESOURCE.
     public function show(string $id)
     {
-        //
         $user =User::find($id);
         if(!$user){
             return response()->json(["data"=>"not found id ".$id],404);
@@ -44,23 +36,17 @@ class UserController extends Controller
         return response()->json(["data"=>true ,"users"=>$user], 200);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
+    // UPDATE THE SPECIFIED RESOURCE IN STORAGE.
     public function update(StoreUserRequest $request, string $id)
     {
-        //
         $user =User::store($request,$id);
         $user = new UserShowResource($user);
         return response()->json(["data"=>true ,"users"=>$user], 200);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+    // REMOVE THE SPECIFIED RESOURCE FROM STORAGE.
     public function destroy(string $id)
     {
-        //
         $user =User::find($id);
         if(!$user){
             return response()->json(["data"=>"not found ".$id],404);

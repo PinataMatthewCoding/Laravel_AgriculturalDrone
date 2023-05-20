@@ -28,7 +28,6 @@ class StorePlanRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
             'pesticide_type'=>[
                 'required',
                 'min:5',

@@ -2,14 +2,11 @@
 
 use App\Http\Controllers\LocationController;
 use App\Http\Controllers\DroneController;
-<<<<<<< HEAD
 use App\Http\Controllers\PlanController;
 use App\Http\Controllers\UserController;
-=======
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\MapController;
 use App\Http\Controllers\ProvinceController;
->>>>>>> a66d3e8d36cb72b0bf96b4fd8d12a48bbb7a2cd9
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Monolog\Handler\RotatingFileHandler;
@@ -29,28 +26,18 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-<<<<<<< HEAD
-// API ROUTE OF LOCATION
-Route::get('/locations',[LocationController::class,'index']);
-Route::post('/location',[LocationController::class,'store']);
-Route::get('/location/{id}',[LocationController::class,'show']);
-Route::put('/location/{id}',[LocationController::class,'update']);
-Route::delete('/location/{id}',[LocationController::class,'destroy']);
-=======
-// Route location 
+// // API ROUTE OF LOCATION
 Route::get("/locations", [LocationController::class, "index"]);
 Route::post("/location", [LocationController::class, "store"]);
 Route::get("/location/{id}", [LocationController::class, "show"]);
 Route::put("/location/{id}", [LocationController::class, "update"]);
 Route::delete("/location/{id}", [LocationController::class, "destroy"]);
->>>>>>> a66d3e8d36cb72b0bf96b4fd8d12a48bbb7a2cd9
 // API ROUTE OF DRONES
 Route::get("/drones", [DroneController::class, "index"]);
 Route::post("/drone", [DroneController::class, "store"]);
 Route::get("/drone/{id}", [DroneController::class, "show"]);
 Route::put("/drone/{id}", [DroneController::class, "update"]);
 Route::delete("/drone/{id}", [DroneController::class, "destroy"]);
-<<<<<<< HEAD
 // API ROUTE OF USER
 Route::get("/users", [UserController::class, "index"]);
 Route::post("/user", [UserController::class, "store"]);
@@ -63,7 +50,6 @@ Route::post("/plan", [PlanController::class, "store"]);
 Route::get("/plan/{id}", [PlanController::class, "show"]);
 Route::put("/plan/{id}", [PlanController::class, "update"]);
 Route::delete("/plan/{id}", [PlanController::class, "destroy"]);
-=======
 // API ROUTE OF MAPS
 Route::get("/maps", [MapController::class, "index"]);
 Route::post("/map", [MapController::class, "store"]);
@@ -82,4 +68,3 @@ Route::post("/image", [ImageController::class, "store"]);
 Route::get("/image/{id}", [ImageController::class, "show"]);
 Route::put("/image/{id}", [ImageController::class, "update"]);
 Route::delete("/image/{id}", [ImageController::class, "destroy"]);
->>>>>>> a66d3e8d36cb72b0bf96b4fd8d12a48bbb7a2cd9
