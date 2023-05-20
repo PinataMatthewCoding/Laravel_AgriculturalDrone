@@ -1,10 +1,9 @@
 <?php
 
-<<<<<<< HEAD
 use App\Http\Controllers\LocationController;
-=======
 use App\Http\Controllers\DroneController;
->>>>>>> 9020ab2a486dd28dc1d016f6b0a37bb150e69a3a
+use App\Http\Controllers\PlanController;
+use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Monolog\Handler\RotatingFileHandler;
@@ -23,19 +22,28 @@ use Monolog\Handler\RotatingFileHandler;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-<<<<<<< HEAD
 
-// Route location 
+// API ROUTE OF LOCATION
 Route::get('/locations',[LocationController::class,'index']);
 Route::post('/location',[LocationController::class,'store']);
 Route::get('/location/{id}',[LocationController::class,'show']);
 Route::put('/location/{id}',[LocationController::class,'update']);
 Route::delete('/location/{id}',[LocationController::class,'destroy']);
-=======
 // API ROUTE OF DRONES
 Route::get("/drones", [DroneController::class, "index"]);
 Route::post("/drone", [DroneController::class, "store"]);
 Route::get("/drone/{id}", [DroneController::class, "show"]);
 Route::put("/drone/{id}", [DroneController::class, "update"]);
 Route::delete("/drone/{id}", [DroneController::class, "destroy"]);
->>>>>>> 9020ab2a486dd28dc1d016f6b0a37bb150e69a3a
+// API ROUTE OF USER
+Route::get("/users", [UserController::class, "index"]);
+Route::post("/user", [UserController::class, "store"]);
+Route::get("/user/{id}", [UserController::class, "show"]);
+Route::put("/user/{id}", [UserController::class, "update"]);
+Route::delete("/user/{id}", [UserController::class, "destroy"]);
+// API ROUTE OF PLAN
+Route::get("/plans", [PlanController::class, "index"]);
+Route::post("/plan", [PlanController::class, "store"]);
+Route::get("/plan/{id}", [PlanController::class, "show"]);
+Route::put("/plan/{id}", [PlanController::class, "update"]);
+Route::delete("/plan/{id}", [PlanController::class, "destroy"]);

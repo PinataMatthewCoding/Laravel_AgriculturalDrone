@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreDroneRequest;
+use App\Http\Resources\DroneResource;
 use App\Http\Resources\ShowDroneResource;
 use App\Models\Drone;
 use Illuminate\Http\Request;
@@ -13,6 +14,7 @@ class DroneController extends Controller
     public function index()
     {
         $drones = Drone::all();
+        $drones = DroneResource::collection($drones);
         return response()->json(["data"=>true ,"drones"=>$drones], 200);
     }
 
@@ -27,10 +29,11 @@ class DroneController extends Controller
     public function show(string $id)
     {
         $drone = Drone::find($id);
-        $drone = new ShowDroneResource($drone);
+        
         if(!$drone){
-            return response()->json(["drone"=>"not found",404]);
+            return response()->json(["data"=>"not found id ".$id],404);
         }
+        $drone = new ShowDroneResource($drone);
         return response()->json(["data"=>true, "drone" =>$drone],200);
     }
 
@@ -44,7 +47,11 @@ class DroneController extends Controller
     // REMOVE THE SPECIFIED RESOURCE FROM STORAGE.
     public function destroy(string $id)
     {
-        $drone = Drone::find($id)->delete();
+        $drone = Drone::find($id);
+        if(!$drone){
+            return response()->json(["data"=>"not found id ".$id],404);
+        }
+        $drone->delete();
         return response()->json(["data"=>true ,"drone"=>"delete successfully"], 201);
     }
 }

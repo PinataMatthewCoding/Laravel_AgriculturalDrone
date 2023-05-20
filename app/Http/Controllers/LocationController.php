@@ -40,6 +40,10 @@ class LocationController extends Controller
     {
         //
         $location =Location::find($id);
+        if(!$location){
+            return response()->json(["data"=>"not found id ".$id],404);
+        }
+        $location =new LocationShowResource($location);
         return response()->json(['success'=>true,'location'=>$location],200);
     }
 
@@ -60,7 +64,11 @@ class LocationController extends Controller
     public function destroy(string $id)
     {
         //
-        $location =Location::find($id)->delete();
-        return response()->json(['success'=>true,'location'=>"delete success"]);
+        $location =Location::find($id);
+        if(!$location){
+            return response()->json(["data"=>"not found id " .$id],404);
+        }
+        $location->delete();
+        return response()->json(['success'=>true,'location'=>"delete successfully"]);
     }
 }
