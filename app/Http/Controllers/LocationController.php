@@ -11,58 +11,48 @@ use Illuminate\Http\Request;
 
 class LocationController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    // DISPLAY A LISTING OF THER RESOURCE
     public function index()
     {
-        //
         $location =Location::all();
         $location=LocationResource::collection($location);
-        return response()->json(['success'=>true,'location'=>$location],200);
+        return response()->json(["data"=>true, "location"=>$location],200);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+    // STORE A NEWLY CREATED RESOURCE IN STORAGE.
     public function store(LocationRequest $request)
     {
-        //
         $location =Location::store($request);
-        return response()->json(['success'=>true,'location'=>$location],200);
-
+        return response()->json(["data"=>true, "location"=>$location],200);
     }
 
-    /**
-     * Display the specified resource.
-     */
+    // DISPLAY THE SPECIFIED RESOURCE.
     public function show(string $id)
     {
-        //
         $location =Location::find($id);
+<<<<<<< HEAD
         if(!$location){
             return response()->json(["data"=>"not found id ".$id],404);
         }
         $location =new LocationShowResource($location);
         return response()->json(['success'=>true,'location'=>$location],200);
+=======
+        return response()->json(["data"=>true, "location"=>$location],200);
+>>>>>>> a66d3e8d36cb72b0bf96b4fd8d12a48bbb7a2cd9
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
+    // UPDATE THE SPECIFIED RESOURCE IN STORAGE.
     public function update(LocationRequest $request, string $id)
     {
-        //
         $location =Location::store($request,$id);
         $location = new LocationShowResource($location);
-        return response()->json(['success'=>true,'location'=>$location],200);
+        return response()->json(["data"=>true, "location"=>$location],200);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+    // REMOVE THE SPECIFIED RESOURCE FROM STORAGE.
     public function destroy(string $id)
     {
+<<<<<<< HEAD
         //
         $location =Location::find($id);
         if(!$location){
@@ -70,5 +60,9 @@ class LocationController extends Controller
         }
         $location->delete();
         return response()->json(['success'=>true,'location'=>"delete successfully"]);
+=======
+        $location =Location::find($id)->delete();
+        return response()->json(["data"=>true, "location"=>"delete successfully"]);
+>>>>>>> a66d3e8d36cb72b0bf96b4fd8d12a48bbb7a2cd9
     }
 }

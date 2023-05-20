@@ -9,16 +9,18 @@ class Location extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'lattitude',
-        'lngtiude',
+        "lattitude",
+        "lngtiude",
        
     ];
     public static function store($request ,$id=null){
-        $locaion = $request->only([
-            'lattitude',
-            'lngtiude'
-        ]);
-        $locations =self::updateOrCreate(['id'=>$id],$locaion);
+        $locaion = $request->only(
+            [
+                "lattitude",
+                "lngtiude"
+            ]
+        );
+        $locations =self::updateOrCreate(["id"=>$id],$locaion);
         return $locations; 
     }
 }
