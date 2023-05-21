@@ -17,7 +17,9 @@ class ProvinceResource extends JsonResource
         return [
             "id"=>$this->id,
             "name"=>$this->name,
-            "map_id"=>$this->map_id,
+            "map_id"=>$this->map,
+            "images"=>$this->images,
+            // "locations"=>$this->locations,
         ];
     }
 }

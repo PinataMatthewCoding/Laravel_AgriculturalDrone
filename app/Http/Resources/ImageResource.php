@@ -17,9 +17,9 @@ class ImageResource extends JsonResource
         return [
             "id"=>$this->id,
             "typeImage"=>$this->typeImage,
-            "drone_id"=>$this->drone_id,
-            "province_id"=>$this->province_id,
-            "map_id"=>$this->map_id,
+            "drone_id"=>$this->drone,
+            "province_id"=>$this->province,
+            "map_id"=>$this->map,
         ];
     }
 }

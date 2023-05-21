@@ -39,7 +39,7 @@ class PlanController extends Controller
         //
         $plan = Plan::find($id);
         if(!$plan){
-            return response()->json(["data"=>"not found " .$id],404);
+            return response()->json(["data"=>"not found id " .$id],404);
         }
         $plan = new PlanShowResource($plan);
         return response()->json(["data"=>true ,"plans"=>$plan], 200);

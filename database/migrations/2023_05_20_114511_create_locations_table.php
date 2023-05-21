@@ -15,6 +15,10 @@ return new class extends Migration
             $table->id();
             $table->integer("lattitude");
             $table->integer("lngtiude");
+            $table->unsignedBigInteger("map_id");
+            $table->foreign("map_id")->references("id")->on("maps")->onDelete("cascade");
+            $table->unsignedBigInteger("province_id");
+            $table->foreign("province_id")->references("id")->on("provinces")->onDelete("cascade");
             $table->timestamps();
         });
     }

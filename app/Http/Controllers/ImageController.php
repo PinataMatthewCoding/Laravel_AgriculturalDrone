@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreImageRequest;
 use App\Http\Resources\ImageResource;
+use App\Http\Resources\ShowImageResource;
 use App\Models\Image;
 use Illuminate\Http\Request;
 
@@ -28,6 +29,10 @@ class ImageController extends Controller
     public function show(string $id)
     {
         $image = Image::find($id);
+        if(!$image){
+            return response()->json(["image"=>"not found id ".$id]);
+        }
+        $image = new ShowImageResource($image);
         return response()->json(["data"=>true, "image"=>$image],200);
     }
 
@@ -43,7 +48,7 @@ class ImageController extends Controller
     {
         $image = Image::find($id);
         if(!$image){
-        return response()->json(["data"=> false,"image"=>"not found id"." " .$id]);
+        return response()->json(["data"=> false,"image"=>"not found id ".$id]);
         }
         $image->delete();
         return response()->json(["data"=>true, "image"=>"delete successfully"]);

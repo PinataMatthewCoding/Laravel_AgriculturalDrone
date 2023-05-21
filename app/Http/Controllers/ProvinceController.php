@@ -29,8 +29,9 @@ class ProvinceController extends Controller
     public function show(string $id)
     {
         $province = Province::find($id);
+        $province = Province::where('name','like','%'.$id.'%')->get();
         if(!$province){
-           return response()->json(["province"=>"not found",404]);
+           return response()->json(["province"=>"not found id ".$id],404);
         }
         $province = new ShowProvinceResource($province);
         return response()->json(["data"=>true, "province" =>$province],200);

@@ -30,7 +30,7 @@ class MapController extends Controller
     {
        $map = Map::find($id);
         if(!$map){
-           return response()->json(["maps"=>"not found",404]);
+           return response()->json(["maps"=>"not found id " .$id],404);
         }
         $map = new ShowMapResource($map);
         return response()->json(["data"=>true, "maps" =>$map],200);
@@ -48,7 +48,7 @@ class MapController extends Controller
     {
         $map = Map::find($id);
         if(!$map){
-            return response()->json(["data"=> false,"map"=>"not found id"." " .$id]);
+            return response()->json(["data"=> false,"map"=>"not found id " .$id],404);
         }
         $map->delete();
         return response()->json(["data"=>true ,"map"=>"delete successfully"], 201);

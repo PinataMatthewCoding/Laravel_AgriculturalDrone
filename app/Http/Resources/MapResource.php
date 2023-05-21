@@ -17,6 +17,8 @@ class MapResource extends JsonResource
         return [
             "id"=>$this->id,
             "description"=>$this->description,
+            "image"=>$this->images,
+            "province"=>$this->provinces,
         ];
     }
 }

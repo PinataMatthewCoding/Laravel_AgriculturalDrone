@@ -21,6 +21,12 @@ return new class extends Migration
             $table->string("battery");
             $table->string("playload_cap");
             $table->string("max_speed");
+            $table->unsignedBigInteger("user_id");
+            $table->foreign("user_id")->references("id")->on("users")->onDelete("cascade");
+            $table->unsignedBigInteger("map_id");
+            $table->foreign("map_id")->references("id")->on("maps")->onDelete("cascade");
+            $table->unsignedBigInteger("location_id");
+            $table->foreign("location_id")->references("id")->on("locations")->onDelete("cascade");
             $table->timestamps();
         });
     }

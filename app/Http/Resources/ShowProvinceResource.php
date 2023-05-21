@@ -17,7 +17,8 @@ class ShowProvinceResource extends JsonResource
         return [
             "id"=>$this->id,
             "name"=>$this->name,
-            "map_id"=>$this->map_id,
+            "map_id"=>$this->map,
+            "images"=>$this->images,
         ];
     }
 }
