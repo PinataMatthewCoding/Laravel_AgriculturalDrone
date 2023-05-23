@@ -13,14 +13,13 @@ class DroneController extends Controller
     // DISPLAY A LISTING OF THER RESOURCE
     public function index()
     {
-        // dd($drone_id);
         $drones = Drone::all();
         $drones = DroneResource::collection($drones);
         return response()->json(["data"=>true ,"drones"=>$drones], 200);
     }
 
     // STORE A NEWLY CREATED RESOURCE IN STORAGE.
-    public function store(Request $request)
+    public function store(StoreDroneRequest $request)
     {
         $drone = Drone::store($request);
         return response()->json(["success"=>true, "data" =>$drone],200);

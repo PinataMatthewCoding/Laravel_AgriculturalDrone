@@ -19,7 +19,7 @@ class ProvinceController extends Controller
     }
 
     // STORE A NEWLY CREATED RESOURCE IN STORAGE.
-    public function store(Request $request)
+    public function store(StoreProvinceRequest $request)
     {
         $province = Province::store($request);
         return response()->json(["data"=>true, "province" =>$province],200);
@@ -29,7 +29,6 @@ class ProvinceController extends Controller
     public function show(string $id)
     {
         $province = Province::find($id);
-        $province = Province::where('name','like','%'.$id.'%')->get();
         if(!$province){
            return response()->json(["province"=>"not found id ".$id],404);
         }
