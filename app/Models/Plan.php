@@ -18,11 +18,7 @@ class Plan extends Model
         "date"
        
     ];
-
-    public function drones()
-    {
-        return $this->belongsToMany(Drone::class,'drone_plans')->withTimestamps();
-    }
+    // CREATE AND UPDATE PLAN
     public static function store($request ,$id=null){
         $plan = $request->only([
             'pesticide_type',
@@ -37,9 +33,12 @@ class Plan extends Model
         $plans->drones()->sync($drones);
         return $plans; 
     }
+    public function drones()
+    {
+        return $this->belongsToMany(Drone::class,'drone_plans')->withTimestamps();
+    }
     public function locations():BelongsToMany
     {
         return $this->belongsToMany(Location::class,'location_plans');
     }
-   
 }

@@ -5,7 +5,7 @@ use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
-class StoreImageRequest extends FormRequest
+class StoreInstructionRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,10 +26,11 @@ class StoreImageRequest extends FormRequest
     public function rules(): array
     {
         return [
-            "typeImage"=>"required|min:2",
-            "drone_id"=>"required|min:1",
-            "province_id"=>"required|min:1",
-            "map_id"=>"required|min:1",
+            "instruction"=>"required",
+            "change_battery"=>"required",
+            "inspect_damage"=>"required",
+            "find_place"=>"required",
+            "start_small"=>"required",
         ];
     }
 }

@@ -5,6 +5,7 @@ use App\Http\Controllers\DroneController;
 use App\Http\Controllers\PlanController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ImageController;
+use App\Http\Controllers\InstructionController;
 use App\Http\Controllers\MapController;
 use App\Http\Controllers\ProvinceController;
 use Illuminate\Http\Request;
@@ -33,6 +34,12 @@ Route::get('/location/{id}',[LocationController::class,'show']);
 Route::put('/location/{id}',[LocationController::class,'update']);
 Route::delete('/location/{id}',[LocationController::class,'destroy']);
 
+// Route location 
+Route::get("/locations", [LocationController::class, "index"]);
+Route::post("/location", [LocationController::class, "store"]);
+Route::get("/location/{id}", [LocationController::class, "show"]);
+Route::put("/location/{id}", [LocationController::class, "update"]);
+Route::delete("/location/{id}", [LocationController::class, "destroy"]);
 // API ROUTE OF DRONES
 
 Route::get("/drones", [DroneController::class, "index"]);
@@ -68,3 +75,21 @@ Route::delete("/map/{id}", [MapController::class, "destroy"]);
 
 
 
+// API ROUTE OF PROVINCE
+Route::get("/provinces", [ProvinceController::class, "index"]);
+Route::post("/province", [ProvinceController::class, "store"]);
+Route::get("/province/{id}", [ProvinceController::class, "show"]);
+Route::put("/province/{id}", [ProvinceController::class, "update"]);
+Route::delete("/province/{id}", [ProvinceController::class, "destroy"]);
+// API ROUTE OF IMAGE
+Route::get("/images", [ImageController::class, "index"]);
+Route::post("/image", [ImageController::class, "store"]);
+Route::get("/image/{id}", [ImageController::class, "show"]);
+Route::put("/image/{id}", [ImageController::class, "update"]);
+Route::delete("/image/{id}", [ImageController::class, "destroy"]);
+// API ROUTE OF INSTRUCTION
+Route::get("/instructions", [InstructionController::class, "index"]);
+Route::post("/instructions", [InstructionController::class, "store"]);
+Route::get("/instructions/{id}", [InstructionController::class, "show"]);
+Route::put("/instructions/{id}", [InstructionController::class, "update"]);
+Route::delete("/instructions/{id}", [InstructionController::class, "destroy"]);

@@ -21,8 +21,8 @@ class PlanShowResource extends JsonResource
             'height'=>$this->height,
             'shape'=>$this->shape,
             'date'=>$this->date,
-            "plans"=>PlanResource::collection($this->plans),
             
+            "plans"=>PlanResource::collection($this->plans),  
         ];
     }
 }
