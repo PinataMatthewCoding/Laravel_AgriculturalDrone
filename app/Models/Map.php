@@ -36,4 +36,8 @@ class Map extends Model
     {
         return $this->hasMany(Location::class);
     }
+    public function drones():HasMany
+    {
+        return $this->hasMany(Drone::class);
+    }
 }

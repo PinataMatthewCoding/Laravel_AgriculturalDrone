@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('images', function (Blueprint $table) {
             $table->id();
             $table->string("typeImage");
-            $table->unsignedBigInteger("drone_id");
+            $table->string("drone_id");
             $table->foreign("drone_id")->references("id")->on("drones")->onDelete("cascade");
             $table->unsignedBigInteger("province_id");
             $table->foreign("province_id")->references("id")->on("provinces")->onDelete("cascade");

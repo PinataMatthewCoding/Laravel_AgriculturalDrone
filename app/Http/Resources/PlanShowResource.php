@@ -14,6 +14,15 @@ class PlanShowResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        return parent::toArray($request);
+        return [
+            'pesticide_type'=>$this->pesticide_type,
+            'seed_type'=>$this->seed_type,
+            'weight'=>$this->weight,
+            'height'=>$this->height,
+            'shape'=>$this->shape,
+            'date'=>$this->date,
+            "plans"=>PlanResource::collection($this->plans),
+            
+        ];
     }
 }

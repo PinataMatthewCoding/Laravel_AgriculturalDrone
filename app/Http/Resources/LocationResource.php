@@ -15,6 +15,7 @@ class LocationResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
+            'id'=>$this->id,
             'lattitude'=>$this->lattitude,
             'lngtiude'=>$this->lngtiude,
             "map_id"=>$this->map,

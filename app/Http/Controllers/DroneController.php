@@ -13,6 +13,7 @@ class DroneController extends Controller
     // DISPLAY A LISTING OF THER RESOURCE
     public function index()
     {
+        // dd($drone_id);
         $drones = Drone::all();
         $drones = DroneResource::collection($drones);
         return response()->json(["data"=>true ,"drones"=>$drones], 200);
@@ -28,7 +29,7 @@ class DroneController extends Controller
     // DISPLAY THE SPECIFIED RESOURCE.
     public function show(string $id)
     {
-        $drone = Drone::where('id', $id)->first();
+        $drone = Drone::find($id);
         if(!$drone){
             return response()->json(["data"=>"not found id ".$id],404);
         }

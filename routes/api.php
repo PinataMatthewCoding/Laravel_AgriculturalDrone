@@ -39,11 +39,12 @@ Route::get("/location/{id}", [LocationController::class, "show"]);
 Route::put("/location/{id}", [LocationController::class, "update"]);
 Route::delete("/location/{id}", [LocationController::class, "destroy"]);
 // API ROUTE OF DRONES
+
 Route::get("/drones", [DroneController::class, "index"]);
-Route::post("/drone", [DroneController::class, "store"]);
-Route::get("/drone/{id}", [DroneController::class, "show"])->where('id', '[A-Za-z0-9]+');
-Route::put("/drone/{id}", [DroneController::class, "update"]);
-Route::delete("/drone/{id}", [DroneController::class, "destroy"]);
+Route::post("/drones", [DroneController::class, "store"]);
+Route::get("/drones/{id}", [DroneController::class, "show"]);
+Route::put("/drones/{id}", [DroneController::class, "update"]);
+Route::delete("/drones/{id}", [DroneController::class, "destroy"]);
 // API ROUTE OF USER
 Route::get("/users", [UserController::class, "index"]);
 Route::post("/user", [UserController::class, "store"]);

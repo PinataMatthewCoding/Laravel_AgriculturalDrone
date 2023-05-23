@@ -20,7 +20,8 @@ class PlanResource extends JsonResource
             'weight'=>$this->weight,
             'height'=>$this->height,
             'shape'=>$this->shape,
-            'date'=>$this->date
+            'date'=>$this->date,
+            "plans"=>$this->plans,
         ];
     }
 }
