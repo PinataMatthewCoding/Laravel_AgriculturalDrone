@@ -10,33 +10,24 @@ use Illuminate\Http\Request;
 
 class PlanController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    // DISPLAY A LISTING OF THER RESOURCE
     public function index()
     {
-        //
         $plan = Plan::all();
         $plan = PlanResource::collection($plan);
         return response()->json(["data"=>true ,"plans"=>$plan], 200);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+    // STORE A NEWLY CREATED RESOURCE IN STORAGE.
     public function store(StorePlanRequest $request)
     {
-        //
         $plan = Plan::store($request);
         return response()->json(["data"=>true ,"plans"=>$plan], 200);
     }
 
-    /**
-     * Display the specified resource.
-     */
+    // DISPLAY THE SPECIFIED RESOURCE.
     public function show(string $id)
     {
-        //
         $plan = Plan::find($id);
         if(!$plan){
             return response()->json(["data"=>"not found id " .$id],404);
@@ -45,22 +36,16 @@ class PlanController extends Controller
         return response()->json(["data"=>true ,"plans"=>$plan], 200);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
+    // UPDATE THE SPECIFIED RESOURCE IN STORAGE.
     public function update(StorePlanRequest $request, string $id)
     {
-        //
         $plan = Plan::store($request,$id);
         return response()->json(["data"=>true ,"plans"=>$plan], 200);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+    // REMOVE THE SPECIFIED RESOURCE FROM STORAGE.
     public function destroy(string $id)
     {
-        //
         $plan = Plan::find($id);
         if(!$plan){
             return response()->json(["data"=>"not found id ".$id],404);

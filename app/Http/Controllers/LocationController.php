@@ -30,13 +30,19 @@ class LocationController extends Controller
     public function show(string $id)
     {
         $location =Location::find($id);
+<<<<<<< HEAD
 
+=======
+>>>>>>> 85441491362ba6a50d900e12a7af222b7e35f840
         if(!$location){
             return response()->json(["data"=>"not found id ".$id],404);
         }
         $location =new LocationShowResource($location);
         return response()->json(['success'=>true,'location'=>$location],200);
+<<<<<<< HEAD
 
+=======
+>>>>>>> 85441491362ba6a50d900e12a7af222b7e35f840
     }
 
     // UPDATE THE SPECIFIED RESOURCE IN STORAGE.
@@ -50,14 +56,20 @@ class LocationController extends Controller
     // REMOVE THE SPECIFIED RESOURCE FROM STORAGE.
     public function destroy(string $id)
     {
+<<<<<<< HEAD
 
+=======
+>>>>>>> 85441491362ba6a50d900e12a7af222b7e35f840
         $location =Location::find($id);
         if(!$location){
             return response()->json(["data"=>"not found id " .$id],404);
         }
         $location->delete();
         return response()->json(['success'=>true,'location'=>"delete successfully"]);
+<<<<<<< HEAD
 
         
+=======
+>>>>>>> 85441491362ba6a50d900e12a7af222b7e35f840
     }
 }
