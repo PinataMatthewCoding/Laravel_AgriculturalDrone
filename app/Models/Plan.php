@@ -24,7 +24,6 @@ class Plan extends Model
         return $this->belongsToMany(Drone::class,'drone_plans')->withTimestamps();
     }
     public static function store($request ,$id=null){
-<<<<<<< HEAD
         $plan = $request->only([
             'pesticide_type',
             'seed_type',
@@ -37,20 +36,6 @@ class Plan extends Model
         $drones = request('drones');
         $plans->drones()->sync($drones);
         return $plans; 
-=======
-        $user = $request->only(
-            [
-                "pesticide_type",
-                "seed_type",
-                "weight",
-                "height",
-                "shape",
-                "date"
-            ]
-        );
-        $users =self::updateOrCreate(["id"=>$id],$user);
-        return $users; 
->>>>>>> 85441491362ba6a50d900e12a7af222b7e35f840
     }
     public function locations():BelongsToMany
     {

@@ -7,6 +7,8 @@ use App\Http\Resources\DroneResource;
 use App\Http\Resources\ShowDroneResource;
 use App\Models\Drone;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+
 
 class DroneController extends Controller
 {
@@ -14,6 +16,7 @@ class DroneController extends Controller
     public function index()
     {
         // dd($drone_id);
+
         $drones = Drone::all();
         $drones = DroneResource::collection($drones);
         return response()->json(["data"=>true ,"drones"=>$drones], 200);
@@ -22,20 +25,43 @@ class DroneController extends Controller
     // STORE A NEWLY CREATED RESOURCE IN STORAGE.
     public function store(Request $request)
     {
+        
         $drone = Drone::store($request);
         return response()->json(["success"=>true, "data" =>$drone],200);
     }
 
     // DISPLAY THE SPECIFIED RESOURCE.
+
+    // -----------show drone by id------------------------
     public function show(string $id)
     {
-        $drone = Drone::find($id);
+        $drone =Drone::find($id);
         if(!$drone){
             return response()->json(["data"=>"not found id ".$id],404);
         }
         $drone = new ShowDroneResource($drone);
-        return response()->json(["data"=>true, "drone" =>$drone],200);
+        return response()->json(['success'=>true,'drone'=>$drone],200);
     }
+    //--------get drone by droneId-------------------------
+    public function showDroneByID(string $id)
+    {
+        $drone = Drone::where('drone_id', $id)->first();
+        $drone = new ShowDroneResource($drone);
+        return response()->json(['success'=>true,'drone'=>$drone],200);
+    }
+
+    // --------------Show current latitude+longitude of drone D23------------
+    public function showCurrentDrone(Request $request){
+        $id = $request->route('id');
+        $drone = Drone::where('drone_id', $id)->first();
+        if ($drone) {
+            return response()->json(['location' => $drone->location]);
+        } else {
+            return response()->json(['message' => 'Drone not found'], 404);
+        }
+    }
+
+
 
     // UPDATE THE SPECIFIED RESOURCE IN STORAGE.
     public function update(StoreDroneRequest $request, string $id)

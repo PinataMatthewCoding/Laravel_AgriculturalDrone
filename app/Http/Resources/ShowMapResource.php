@@ -16,9 +16,11 @@ class ShowMapResource extends JsonResource
     {
         return [
             "id"=>$this->id,
+            "name"=>$this->name,
+            "typeImage"=>$this->typeImage,
             "description"=>$this->description,
-            "image"=>$this->images,
-            "province"=>$this->provinces,
+            "drone_id"=>$this->drone,
+            
         ];
     }
 }

@@ -14,8 +14,6 @@ class Location extends Model
     protected $fillable = [
         "lattitude",
         "lngtiude",
-        "map_id",
-        "province_id"
        
     ];
     public static function store($request ,$id=null){
@@ -23,8 +21,6 @@ class Location extends Model
             [
                 "lattitude",
                 "lngtiude",
-                "map_id",
-                "province_id"
             ]
         );
         $locations =self::updateOrCreate(["id"=>$id],$locaion);

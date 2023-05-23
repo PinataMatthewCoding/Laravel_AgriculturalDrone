@@ -11,7 +11,7 @@ class Drone extends Model
 {
     use HasFactory;
     protected $fillable = [
-        "id",
+        "drone_id",
         "country",
         "company",
         "endurance",
@@ -20,14 +20,14 @@ class Drone extends Model
         "playload_cap",
         "max_speed",
         "user_id",
-        "map_id",
         "location_id"
     ];
     // CREATE  AND UPDATE DRONES
     public static function store($request, $id=null){
+      
         $drone = $request->only(
             [
-                "id",
+                "drone_id",
                 "country",
                 "company",
                 "endurance",
@@ -36,7 +36,6 @@ class Drone extends Model
                 "playload_cap",
                 "max_speed",
                 "user_id",
-                "map_id",
                 "location_id"
             ]
         );
@@ -51,9 +50,9 @@ class Drone extends Model
     {
         return $this->belongsTo(User::class);
     }
-    public function map():BelongsTo
+    public function maps():HasMany
     {
-        return $this->belongsTo(Map::class);
+        return $this->hasMany(Map::class);
     }
     public function location():BelongsTo
     {
@@ -64,3 +63,17 @@ class Drone extends Model
         return $this->belongsToMany(Plan::class,'drone_plans')->withTimestamps();
     }
 }
+
+
+
+
+// public function store(Request $request){
+
+//     $id = IdGenerator::generate(['table' => 'todos', 'length' => 6, 'prefix' => date('y')]);
+   
+//     $todo = new Todo();
+//     $todo->id = $id;
+//     $todo->title = $request->get('title');
+//     $todo->save();
+   
+//    }

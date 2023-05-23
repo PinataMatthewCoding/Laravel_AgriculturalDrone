@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreMapRequest;
+use App\Http\Resources\ImageMapResource;
 use App\Http\Resources\MapResource;
 use App\Http\Resources\ShowMapResource;
+use App\Models\Image;
 use App\Models\Map;
 use Illuminate\Http\Request;
 
@@ -17,24 +19,29 @@ class MapController extends Controller
         $maps = MapResource::collection($maps);
         return response()->json(["data"=>true ,"maps"=>$maps], 200);
     }
+    // -------------show imageMap--------------------------
+   
 
-    // STORE A NEWLY CREATED RESOURCE IN STORAGE.
     public function store(Request $request)
     {
        $map = Map::store($request);
         return response()->json(["data"=>true, "map" =>$map],200);
     }
 
-    // DISPLAY THE SPECIFIED RESOURCE.
+
+// ------------------show map by id---------------------------------------
     public function show(string $id)
     {
-       $map = Map::find($id);
+    $map = Map::find($id);
         if(!$map){
-           return response()->json(["maps"=>"not found id " .$id],404);
+        return response()->json(["maps"=>"not found id " .$id],404);
         }
         $map = new ShowMapResource($map);
         return response()->json(["data"=>true, "maps" =>$map],200);
     }
+
+
+
 
     // UPDATE THE SPECIFIED RESOURCE IN STORAGE.
     public function update(StoreMapRequest $request, string $id)

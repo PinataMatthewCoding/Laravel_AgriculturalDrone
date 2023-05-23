@@ -16,6 +16,7 @@ class ShowDroneResource extends JsonResource
     {
         return [
             "id"=>$this->id,
+            "drone_id"=>$this->drone_id,
             "country"=>$this->country,
             "company"=>$this->company,
             "endurance"=>$this->endurance,
@@ -24,9 +25,9 @@ class ShowDroneResource extends JsonResource
             "playload_cap"=>$this->playload_cap,
             "max_speed"=>$this->max_speed,
             "user_id"=>$this->user,
-            "map_id"=>$this->map,
             "location_id"=>$this->location,
-            "drones"=>DroneResource::collection($this->drones),
+            "map_id"=>$this->maps,
+          
 
             
         ];
