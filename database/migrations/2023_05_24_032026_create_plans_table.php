@@ -18,7 +18,8 @@ return new class extends Migration
             $table->integer('weight');
             $table->integer('height');
             $table->string('shape');
-            $table->dateTime('date');
+            $table->dateTime('start_time');
+            $table->dateTime('end_time');
             $table->timestamps();
         });
     }

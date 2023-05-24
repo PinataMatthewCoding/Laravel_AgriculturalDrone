@@ -42,10 +42,6 @@ class Drone extends Model
         $drones= self::updateOrcreate(["id"=>$id],$drone);
         return $drones;
     }
-    public function images():HasMany
-    {
-        return $this->hasMany(Image::class);
-    }
     public function user():BelongsTo
     {
         return $this->belongsTo(User::class);

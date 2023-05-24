@@ -28,28 +28,13 @@ class StorePlanRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'pesticide_type'=>[
-                'required',
-                'min:5',
-                'max:500'
-            ],
-            'seed_type'=>[
-                'required',
-                'min:5',
-                'max:500'
-            ],
-            'weight'=>[
-                'required',
-            ],
-            'height'=>[
-                'required',
-            ],
-            'shape'=>[
-                'required',
-            ],
-            'date'=>[
-                'required',
-            ]
+            "pesticide_type"=>"required",
+            "seed_type"=>"required",
+            "weight"=>"required",
+            "height"=>"required",
+            "shape"=>"required",
+            "start_time"=>"required",
+            "end_time"=>"required",
         ];
     }
 }

@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Plan extends Model
 {
@@ -15,19 +17,22 @@ class Plan extends Model
         "weight",
         "height",
         "shape",
-        "date"
-       
+        "start_time",
+        "end_time",
     ];
     // CREATE AND UPDATE PLAN
     public static function store($request ,$id=null){
-        $plan = $request->only([
-            'pesticide_type',
-            'seed_type',
-            'weight',
-            'height',
-            'shape',
-            'date'
-        ]);
+        $plan = $request->only(
+            [
+                "pesticide_type",
+                "seed_type",
+                "weight",
+                "height",
+                "shape",
+                "start_time",
+                "end_time",
+            ]
+        );
         $plans =self::updateOrCreate(['id'=>$id],$plan);
         $drones = request('drones');
         $plans->drones()->sync($drones);
@@ -41,4 +46,5 @@ class Plan extends Model
     {
         return $this->belongsToMany(Location::class,'location_plans');
     }
+   
 }
