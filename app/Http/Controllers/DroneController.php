@@ -61,8 +61,11 @@ class DroneController extends Controller
         }
     }
 
+// ----------------update drone D23 to enter run mode with a given plan----------------
 
-
+    public function updateDrone(){
+        
+    }
     // UPDATE THE SPECIFIED RESOURCE IN STORAGE.
     public function update(StoreDroneRequest $request, string $id)
     {

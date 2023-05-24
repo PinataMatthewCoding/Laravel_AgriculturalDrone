@@ -9,6 +9,7 @@ use App\Http\Controllers\ImageController;
 use App\Http\Controllers\InstructionController;
 use App\Http\Controllers\MapController;
 use App\Http\Controllers\ProvinceController;
+use App\Http\Controllers\TypeplanController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Monolog\Handler\RotatingFileHandler;
@@ -34,24 +35,14 @@ Route::post('/location',[LocationController::class,'store']);
 Route::get('/location/{id}',[LocationController::class,'show']);
 Route::put('/location/{id}',[LocationController::class,'update']);
 Route::delete('/location/{id}',[LocationController::class,'destroy']);
-
-// Route location 
-Route::get("/locations", [LocationController::class, "index"]);
-Route::post("/location", [LocationController::class, "store"]);
-Route::get("/location/{id}", [LocationController::class, "show"]);
-Route::put("/location/{id}", [LocationController::class, "update"]);
-Route::delete("/location/{id}", [LocationController::class, "destroy"]);
 // API ROUTE OF DRONES
-
 Route::get("/drones", [DroneController::class, "index"]);
 Route::post("/drones", [DroneController::class, "store"]);
 Route::get("/drone/{id}", [DroneController::class, "show"]);
 Route::put("/drones/{id}", [DroneController::class, "update"]);
 Route::delete("/drones/{id}", [DroneController::class, "destroy"]);
-
 // GET DRONE BY DRONE_ID
 Route::get("/drones/{id}", [DroneController::class, "showDroneByID"]);
-
 // Show current latitude+longitude of drone droneId
 Route::get("/currentDrone/{id}/location", [DroneController::class, "showCurrentDrone"]);
 
