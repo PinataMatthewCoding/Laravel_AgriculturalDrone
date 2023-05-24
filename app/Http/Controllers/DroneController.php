@@ -1,22 +1,17 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Http\Requests\StoreDroneRequest;
 use App\Http\Resources\DroneResource;
 use App\Http\Resources\ShowDroneResource;
 use App\Models\Drone;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
-
 
 class DroneController extends Controller
 {
     // DISPLAY A LISTING OF THER RESOURCE
     public function index()
     {
-        // dd($drone_id);
-
         $drones = Drone::all();
         $drones = DroneResource::collection($drones);
         return response()->json(["data"=>true ,"drones"=>$drones], 200);
@@ -31,8 +26,7 @@ class DroneController extends Controller
     }
 
     // DISPLAY THE SPECIFIED RESOURCE.
-
-    // -----------show drone by id------------------------
+    //================ show drone by id =====================
     public function show(string $id)
     {
         $drone =Drone::find($id);
@@ -42,7 +36,8 @@ class DroneController extends Controller
         $drone = new ShowDroneResource($drone);
         return response()->json(['success'=>true,'drone'=>$drone],200);
     }
-    //--------get drone by droneId-------------------------
+
+    //================= get drone by droneId =================
     public function showDroneByID(string $id)
     {
         $drone = Drone::where('drone_id', $id)->first();
@@ -50,8 +45,8 @@ class DroneController extends Controller
         return response()->json(['success'=>true,'drone'=>$drone],200);
     }
 
-    // --------------Show current latitude+longitude of drone D23------------
-    public function showCurrentDrone(Request $request){
+    // =================== Show current latitude+longitude of drone D23===============
+        public function showCurrentDrone(Request $request){
         $id = $request->route('id');
         $drone = Drone::where('drone_id', $id)->first();
         if ($drone) {
@@ -61,11 +56,11 @@ class DroneController extends Controller
         }
     }
 
-// ----------------update drone D23 to enter run mode with a given plan----------------
-
+    // ============== update drone D23 to enter run mode with a given plan ===========
     public function updateDrone(){
         
     }
+
     // UPDATE THE SPECIFIED RESOURCE IN STORAGE.
     public function update(StoreDroneRequest $request, string $id)
     {

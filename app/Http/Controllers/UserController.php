@@ -1,13 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Http\Requests\StoreUserRequest;
+use App\Http\Resources\ShowUserResource;
 use App\Http\Resources\UserResource;
-use App\Http\Resources\UserShowResource;
 use App\Models\User;
-use Illuminate\Http\Request;
-use Illuminate\Contracts\Cache\Store;
+
 class UserController extends Controller
 {
     // DISPLAY A LISTING OF THER RESOURCE
@@ -32,7 +30,7 @@ class UserController extends Controller
         if(!$user){
             return response()->json(["data"=>"not found id ".$id],404);
         }
-        $user = new UserShowResource($user);
+        $user = new ShowUserResource($user);
         return response()->json(["data"=>true ,"users"=>$user], 200);
     }
 
@@ -40,7 +38,6 @@ class UserController extends Controller
     public function update(StoreUserRequest $request, string $id)
     {
         $user =User::store($request,$id);
-        $user = new UserShowResource($user);
         return response()->json(["data"=>true ,"users"=>$user], 200);
     }
 

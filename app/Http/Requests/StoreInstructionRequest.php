@@ -4,7 +4,6 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Exceptions\HttpResponseException;
-
 class StoreInstructionRequest extends FormRequest
 {
     /**
@@ -26,11 +25,11 @@ class StoreInstructionRequest extends FormRequest
     public function rules(): array
     {
         return [
+            "brand"=>"required",
+            "type"=>"required",
+            "max_flight_time"=>"required",
+            "description"=>"required",
             "instruction"=>"required",
-            "change_battery"=>"required",
-            "inspect_damage"=>"required",
-            "find_place"=>"required",
-            "start_small"=>"required",
         ];
     }
 }

@@ -4,9 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StorePlanRequest;
 use App\Http\Resources\PlanResource;
-use App\Http\Resources\PlanShowResource;
+use App\Http\Resources\ShowPlanResource;
 use App\Models\Plan;
-use Illuminate\Http\Request;
 
 class PlanController extends Controller
 {
@@ -32,7 +31,7 @@ class PlanController extends Controller
         if(!$plan){
             return response()->json(["data"=>"not found id " .$id],404);
         }
-        $plan = new PlanShowResource($plan);
+        $plan = new ShowPlanResource($plan);
         return response()->json(["data"=>true ,"plans"=>$plan], 200);
     }
 
