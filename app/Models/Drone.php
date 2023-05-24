@@ -42,10 +42,6 @@ class Drone extends Model
         $drones= self::updateOrcreate(["id"=>$id],$drone);
         return $drones;
     }
-    public function images():HasMany
-    {
-        return $this->hasMany(Image::class);
-    }
     public function user():BelongsTo
     {
         return $this->belongsTo(User::class);
@@ -67,13 +63,3 @@ class Drone extends Model
 
 
 
-// public function store(Request $request){
-
-//     $id = IdGenerator::generate(['table' => 'todos', 'length' => 6, 'prefix' => date('y')]);
-   
-//     $todo = new Todo();
-//     $todo->id = $id;
-//     $todo->title = $request->get('title');
-//     $todo->save();
-   
-//    }

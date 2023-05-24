@@ -31,14 +31,8 @@ class Map extends Model
         $map= self::updateOrcreate(["id"=>$id],$map);
         return $map;
     }
-    public function images():HasMany
-    {
-        return $this->hasMany(Image::class);
-    }
-    public function provinces():HasMany
-    {
-        return $this->hasMany(Province::class);
-    }
+    
+   
     public function locations():HasMany
     {
         return $this->hasMany(Location::class);
@@ -46,5 +40,9 @@ class Map extends Model
     public function drone():BelongsTo
     {
         return $this->belongsTo(Drone::class);
+    }
+    public function farms():HasMany
+    {
+        return $this->hasMany(Farm::class);
     }
 }

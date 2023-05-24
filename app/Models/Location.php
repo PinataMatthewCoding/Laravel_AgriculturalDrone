@@ -28,10 +28,6 @@ class Location extends Model
         $locations->plans()->sync($plans);
         return $locations; 
     }
-    public function province():BelongsTo
-    {
-        return $this->belongsTo(Province::class);
-    }
     public function map():BelongsTo
     {
         return $this->belongsTo(Map::class);

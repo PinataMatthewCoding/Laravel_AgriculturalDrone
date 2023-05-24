@@ -2,12 +2,12 @@
 
 namespace App\Http\Requests;
 
-use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Contracts\Validation\Validator;
+use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Validation\Rule;
 
-class StoreMapRequest extends FormRequest
+class FarmRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -18,9 +18,8 @@ class StoreMapRequest extends FormRequest
     }
     protected function failedValidation(Validator $validator)
     {
-        throw new HttpResponseException(response()->json(['success' => false, 'message' => $validator->errors()], 402));
+        throw new HttpResponseException(response()->json(['error' => false, 'message' => $validator->errors()], 402));
     }
-
     /**
      * Get the validation rules that apply to the request.
      *
@@ -29,25 +28,22 @@ class StoreMapRequest extends FormRequest
     public function rules(): array
     {
         return [
-            "name"=>[
-                 'required',
-                 'min:2',
-                 'max:200',
-                  Rule::unique('maps')->ignore($this->id)
-            ],
-            "typeImage"=>[
+            'name'=>[
                 'required',
-                Rule::unique('maps')->ignore($this->id)
-            ],
-            "description"=>[
-                'required',
-                'min:2',
+                'min:5',
                 'max:200',
-                Rule::unique('maps')->ignore($this->id)
+                Rule::unique('farms')->ignore($this->id),   
             ],
-            "drone_id"=>[
+            'address'=>[
                 'required',
+                'min:5',
+                'max:200',
+                Rule::unique('farms')->ignore($this->id), 
+            ],
+            'map_id'=>[
+                'required'
             ]
+            
         ];
     }
 }

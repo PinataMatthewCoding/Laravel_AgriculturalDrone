@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\LocationController;
 use App\Http\Controllers\DroneController;
+use App\Http\Controllers\FarmController;
 use App\Http\Controllers\PlanController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ImageController;
@@ -74,19 +75,20 @@ Route::put("/map/{id}", [MapController::class, "update"]);
 Route::delete("/map/{id}", [MapController::class, "destroy"]);
 
 
-
+// GET MAP DRONE FARM
+Route::get("/maps/{name}/{id}", [MapController::class, "showDroneFarm"]);
 // API ROUTE OF PROVINCE
 Route::get("/provinces", [ProvinceController::class, "index"]);
 Route::post("/province", [ProvinceController::class, "store"]);
 Route::get("/province/{id}", [ProvinceController::class, "show"]);
 Route::put("/province/{id}", [ProvinceController::class, "update"]);
 Route::delete("/province/{id}", [ProvinceController::class, "destroy"]);
-// API ROUTE OF IMAGE
-Route::get("/images", [ImageController::class, "index"]);
-Route::post("/image", [ImageController::class, "store"]);
-Route::get("/image/{id}", [ImageController::class, "show"]);
-Route::put("/image/{id}", [ImageController::class, "update"]);
-Route::delete("/image/{id}", [ImageController::class, "destroy"]);
+// API ROUTE OF FARM
+Route::get("/farms", [FarmController::class, "index"]);
+Route::post("/farm", [FarmController::class, "store"]);
+Route::get("/farm/{id}", [FarmController::class, "show"]);
+Route::put("/farm/{id}", [FarmController::class, "update"]);
+Route::delete("/farm/{id}", [FarmController::class, "destroy"]);
 // API ROUTE OF INSTRUCTION
 Route::get("/instructions", [InstructionController::class, "index"]);
 Route::post("/instructions", [InstructionController::class, "store"]);
