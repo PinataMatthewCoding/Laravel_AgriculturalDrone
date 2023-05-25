@@ -9,7 +9,7 @@ use App\Models\Plan;
 
 class PlanController extends Controller
 {
-    // DISPLAY A LISTING OF THER RESOURCE
+    // display a listing of ther resource.
     public function index()
     {
         $plan = Plan::all();
@@ -17,14 +17,14 @@ class PlanController extends Controller
         return response()->json(["data"=>true ,"plans"=>$plan], 200);
     }
 
-    // STORE A NEWLY CREATED RESOURCE IN STORAGE.
+    // store a newly created resource in storage.
     public function store(StorePlanRequest $request)
     {
         $plan = Plan::store($request);
         return response()->json(["data"=>true ,"plans"=>$plan], 200);
     }
 
-    // DISPLAY THE SPECIFIED RESOURCE.
+    // display the specified resource.
     public function show(string $id)
     {
         $plan = Plan::find($id);
@@ -35,14 +35,14 @@ class PlanController extends Controller
         return response()->json(["data"=>true ,"plans"=>$plan], 200);
     }
 
-    // UPDATE THE SPECIFIED RESOURCE IN STORAGE.
+    // update the specified resource in storage.
     public function update(StorePlanRequest $request, string $id)
     {
         $plan = Plan::store($request,$id);
         return response()->json(["data"=>true ,"plans"=>$plan], 200);
     }
 
-    // REMOVE THE SPECIFIED RESOURCE FROM STORAGE.
+    // remove the specifide resource from storage
     public function destroy(string $id)
     {
         $plan = Plan::find($id);

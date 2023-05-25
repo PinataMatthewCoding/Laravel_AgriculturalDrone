@@ -5,8 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\HasOne;
+
 
 class Plan extends Model
 {
@@ -20,7 +19,7 @@ class Plan extends Model
         "start_time",
         "end_time",
     ];
-    // CREATE AND UPDATE PLAN
+    // Create and update plan
     public static function store($request ,$id=null){
         $plan = $request->only(
             [
@@ -38,6 +37,7 @@ class Plan extends Model
         $plans->drones()->sync($drones);
         return $plans; 
     }
+
     public function drones()
     {
         return $this->belongsToMany(Drone::class,'drone_plans')->withTimestamps();
@@ -46,5 +46,4 @@ class Plan extends Model
     {
         return $this->belongsToMany(Location::class,'location_plans');
     }
-   
 }

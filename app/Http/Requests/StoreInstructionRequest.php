@@ -26,7 +26,7 @@ class StoreInstructionRequest extends FormRequest
     {
         return [
             "brand"=>"required",
-            "type"=>"required",
+            "type"=>"required|unique:instructions",
             "max_flight_time"=>"required",
             "description"=>"required",
             "instruction"=>"required",

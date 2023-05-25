@@ -11,7 +11,7 @@ use App\Models\Map;
 
 class MapController extends Controller
 {
-    // DISPLAY A LISTING OF THER RESOURCE
+    // display a listing of ther resource.
     public function index()
     {
         $maps = Map::all();
@@ -19,14 +19,14 @@ class MapController extends Controller
         return response()->json(["data"=>true ,"maps"=>$maps], 200);
     }
 
-    // STORE A NEWLY CREATED RESOURCE IN STORAGE.
+    // store a newly created resource in storage.
     public function store(StoreMapRequest $request)
     {
        $map = Map::store($request);
         return response()->json(["data"=>true, "map" =>$map],200);
     }
 
-    // DISPLAY THE SPECIFIED RESOURCE.
+    // display the specified resource.
     public function show(string $id)
     {
         $map = Map::find($id);
@@ -37,7 +37,7 @@ class MapController extends Controller
         return response()->json(["data"=>true, "maps" =>$map],200);
     }
 
-    // ============== get map nameofprovince and farm id ===============
+    // ======= get image in map when (put name map and id of farm) ==========
     public function showDroneFarm($name,$id){
         $name = Map::where('name', $name)->first();
         $farmID= Farm::where('id',$id)->first();
@@ -51,14 +51,14 @@ class MapController extends Controller
         }    
     }
 
-    // UPDATE THE SPECIFIED RESOURCE IN STORAGE.
+    // update the specified resource in storage.
     public function update(StoreMapRequest $request, string $id)
     {
        $map = Map::store($request,$id);
         return response()->json(["data"=>true, "maps" =>$map],200);
     }
 
-    // REMOVE THE SPECIFIED RESOURCE FROM STORAGE.
+    // remove the specifide resource from storage
     public function destroy(string $id)
     {
         $map = Map::find($id);

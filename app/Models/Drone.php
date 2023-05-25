@@ -23,7 +23,7 @@ class Drone extends Model
         "user_id",
         "location_id"
     ];
-    // CREATE  AND UPDATE DRONES
+    // Create and update drone
     public static function store($request, $id=null){
       
         $drone = $request->only(

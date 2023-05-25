@@ -26,9 +26,9 @@ class StoreFarmRequest extends FormRequest
     public function rules(): array
     {
         return [
-            "name"=>"required|min:2|unique:farms",
-            "address"=>"required|min:5|max:200|unique:farms",
-            "map_id"=>"required|min:2|unique:farms",
+            "name"=>"required|unique:farms",
+            "address"=>"required|unique:farms",
+            "map_id"=>"required",
         ];
     }
 }

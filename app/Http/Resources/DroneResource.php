@@ -27,7 +27,7 @@ class DroneResource extends JsonResource
 
             "user_id"=>$this->user,
             "location_id"=>$this->location,
-            "map_id"=>$this->maps,
+            // "map_id"=>$this->maps,
         ];
     }
 }
