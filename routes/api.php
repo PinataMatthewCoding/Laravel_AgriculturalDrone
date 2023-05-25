@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthenticationController;
 use App\Http\Controllers\LocationController;
 use App\Http\Controllers\DroneController;
 use App\Http\Controllers\FarmController;
@@ -37,14 +38,17 @@ Route::put('/location/{id}',[LocationController::class,'update']);
 Route::delete('/location/{id}',[LocationController::class,'destroy']);
 // API ROUTE OF DRONES
 Route::get("/drones", [DroneController::class, "index"]);
-Route::post("/drones", [DroneController::class, "store"]);
+Route::post("/drone", [DroneController::class, "store"]);
 Route::get("/drone/{id}", [DroneController::class, "show"]);
-Route::put("/drones/{id}", [DroneController::class, "update"]);
-Route::delete("/drones/{id}", [DroneController::class, "destroy"]);
+Route::put("/drone/{id}", [DroneController::class, "update"]);
+Route::delete("/drone/{id}", [DroneController::class, "destroy"]);
+
 // GET DRONE BY DRONE_ID
 Route::get("/drones/{id}", [DroneController::class, "showDroneByID"]);
+
 // Show current latitude+longitude of drone droneId
 Route::get("/currentDrone/{id}/location", [DroneController::class, "showCurrentDrone"]);
+
 
 // API ROUTE OF USER
 Route::get("/users", [UserController::class, "index"]);
@@ -52,6 +56,10 @@ Route::post("/user", [UserController::class, "store"]);
 Route::get("/user/{id}", [UserController::class, "show"]);
 Route::put("/user/{id}", [UserController::class, "update"]);
 Route::delete("/user/{id}", [UserController::class, "destroy"]);
+
+Route::post("/login", [UserController::class, "login"]);
+
+
 // API ROUTE OF PLAN
 Route::get("/plans", [PlanController::class, "index"]);
 Route::post("/plan", [PlanController::class, "store"]);
@@ -68,12 +76,15 @@ Route::delete("/map/{id}", [MapController::class, "destroy"]);
 
 // GET MAP DRONE FARM
 Route::get("/maps/{name}/{id}", [MapController::class, "showDroneFarm"]);
-// API ROUTE OF PROVINCE
-Route::get("/provinces", [ProvinceController::class, "index"]);
-Route::post("/province", [ProvinceController::class, "store"]);
-Route::get("/province/{id}", [ProvinceController::class, "show"]);
-Route::put("/province/{id}", [ProvinceController::class, "update"]);
-Route::delete("/province/{id}", [ProvinceController::class, "destroy"]);
+
+// delete image
+Route::delete("/maps/{name}/{id}", [MapController::class, "deleteImage"]);
+
+// add new image in map to farm
+Route::post("/maps/{name}/{id}", [MapController::class, "storeNewImage"]);
+
+
+
 // API ROUTE OF FARM
 Route::get("/farms", [FarmController::class, "index"]);
 Route::post("/farm", [FarmController::class, "store"]);

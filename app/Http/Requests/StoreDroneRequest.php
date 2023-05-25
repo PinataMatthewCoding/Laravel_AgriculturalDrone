@@ -29,7 +29,7 @@ class StoreDroneRequest extends FormRequest
     public function rules(): array
     {
         return [
-            "drone_id"=>"required|min:2|unique:drones",
+            "drone_id"=>"required|min:2",
             "country"=>"required|min:2",
             "company"=>"required|min:2",
             "endurance"=>"required|min:2",

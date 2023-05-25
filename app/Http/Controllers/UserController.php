@@ -8,9 +8,13 @@ use App\Http\Resources\UserShowResource;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Contracts\Cache\Store;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 class UserController extends Controller
 {
     // DISPLAY A LISTING OF THER RESOURCE
+
     public function index()
     {
         $user = User::all();
@@ -19,10 +23,28 @@ class UserController extends Controller
     }
 
     // STORE A NEWLY CREATED RESOURCE IN STORAGE.
-    public function store(StoreUserRequest $request)
+    public function store(Request $request)
     {
-        $user = User::store($request);
-        return response()->json(["data"=>true ,"users"=>$user], 200);
+        $user = User::create([
+            'name' => request('name'),
+            'email' => request('email'),
+            'password' => Hash::make($request->password)
+        ]);
+        $token = $user->createToken("api")->plainTextToken;
+        return response()->json(['success' =>true, 'data' => $user,'token'=>$token],201);
+        
+    }
+
+    // --------------------------login-------------------------------------
+    public function login(Request $request){
+        $creadentail = $request->only('email','password');
+        if(Auth::attempt($creadentail)){
+            $user = Auth::user();
+            dd($user);
+            $token = $user->createToken("API-TOKEN")->plainTextToken;
+            return response()->json(['data'=>$token],200);
+        }
+        return response()->json(['messaage' =>'Invalid creadentail'],401);
     }
 
     // DISPLAY THE SPECIFIED RESOURCE.

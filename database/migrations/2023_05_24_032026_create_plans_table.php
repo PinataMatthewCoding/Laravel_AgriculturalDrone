@@ -20,6 +20,10 @@ return new class extends Migration
             $table->string('shape');
             $table->dateTime('start_time');
             $table->dateTime('end_time');
+            $table->unsignedBigInteger("drone_id");
+            $table->foreign("drone_id")->references("id")->on("drones")->onDelete("cascade");
+            $table->unsignedBigInteger("instruction_id");
+            $table->foreign("instruction_id")->references("id")->on("instructions")->onDelete("cascade");
             $table->timestamps();
         });
     }
@@ -30,5 +34,6 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('plans');
+
     }
 };
