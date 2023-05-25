@@ -4,7 +4,6 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Exceptions\HttpResponseException;
-
 class StoreInstructionRequest extends FormRequest
 {
     /**
@@ -26,6 +25,7 @@ class StoreInstructionRequest extends FormRequest
     public function rules(): array
     {
         return [
+
             "name"=>"required",
             "band"=>"required",
             "type"=>"required",

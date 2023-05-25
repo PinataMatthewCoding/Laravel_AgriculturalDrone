@@ -19,6 +19,7 @@ class Drone extends Model
         "battery",
         "playload_cap",
         "max_speed",
+        
         "user_id",
         "location_id"
     ];
@@ -35,6 +36,7 @@ class Drone extends Model
                 "battery",
                 "playload_cap",
                 "max_speed",
+
                 "user_id",
                 "location_id"
             ]

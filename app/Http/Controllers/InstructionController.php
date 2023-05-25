@@ -1,17 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Http\Requests\StoreInstructionRequest;
-use App\Http\Resources\DroneResource;
 use App\Http\Resources\InstructionResource;
 use App\Http\Resources\ShowInstructionResource;
 use App\Models\Instruction;
-use Illuminate\Http\Request;
-use RuntimeException;
-
-use function GuzzleHttp\Promise\inspect;
-
 class InstructionController extends Controller
 {
     // DISPLAY A LISTING OF THER RESOURCE
@@ -25,7 +18,6 @@ class InstructionController extends Controller
     // STORE A NEWLY CREATED RESOURCE IN STORAGE.
     public function store (StoreInstructionRequest $request)
     {
-        // dd(99);
         $instructions = Instruction::store($request);
         return response()->json(["data"=>true, "instruction"=>$instructions],200);
     }

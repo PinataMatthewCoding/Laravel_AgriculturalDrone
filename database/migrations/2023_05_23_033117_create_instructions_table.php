@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('instructions', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
             $table->string("band");
             $table->string("type");
             $table->string("max_flight_time");

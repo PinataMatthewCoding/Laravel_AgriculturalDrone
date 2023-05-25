@@ -1,13 +1,11 @@
 <?php
 
 namespace App\Http\Requests;
-
-use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Exceptions\HttpResponseException;
-use Illuminate\Validation\Rule;
 
-class FarmRequest extends FormRequest
+class StoreLocationmRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -19,7 +17,7 @@ class FarmRequest extends FormRequest
     protected function failedValidation(Validator $validator)
     {
         throw new HttpResponseException(response()->json(['error' => false, 'message' => $validator->errors()], 402));
-    }
+    } 
     /**
      * Get the validation rules that apply to the request.
      *
@@ -28,22 +26,8 @@ class FarmRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name'=>[
-                'required',
-                'min:5',
-                'max:200',
-                Rule::unique('farms')->ignore($this->id),   
-            ],
-            'address'=>[
-                'required',
-                'min:5',
-                'max:200',
-                Rule::unique('farms')->ignore($this->id), 
-            ],
-            'map_id'=>[
-                'required'
-            ]
-            
+            "lattitude"=>"required",
+            "lngtiude"=>"required",
         ];
     }
 }

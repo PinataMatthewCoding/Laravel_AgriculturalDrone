@@ -1,13 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use App\Http\Requests\LocationRequest;
+use App\Http\Requests\StoreLocationmRequest;
 use App\Http\Resources\LocationResource;
-use App\Http\Resources\LocationShowResource;
+use App\Http\Resources\ShowLocationResource;
 use App\Models\Location;
-use Illuminate\Contracts\Cache\Store;
-use Illuminate\Http\Request;
 
 class LocationController extends Controller
 {
@@ -20,7 +17,7 @@ class LocationController extends Controller
     }
 
     // STORE A NEWLY CREATED RESOURCE IN STORAGE.
-    public function store(LocationRequest $request)
+    public function store(StoreLocationmRequest $request)
     {
         $location =Location::store($request);
         return response()->json(["data"=>true, "location"=>$location],200);
@@ -33,15 +30,14 @@ class LocationController extends Controller
         if(!$location){
             return response()->json(["data"=>"not found id ".$id],404);
         }
-        $location =new LocationShowResource($location);
+        $location = new ShowLocationResource($location);
         return response()->json(['success'=>true,'location'=>$location],200);
     }
 
     // UPDATE THE SPECIFIED RESOURCE IN STORAGE.
-    public function update(LocationRequest $request, string $id)
+    public function update(StoreLocationmRequest $request, string $id)
     {
-        $location =Location::store($request,$id);
-        $location = new LocationShowResource($location);
+        $location = Location::store($request,$id);
         return response()->json(["data"=>true, "location"=>$location],200);
     }
 
@@ -54,7 +50,5 @@ class LocationController extends Controller
         }
         $location->delete();
         return response()->json(['success'=>true,'location'=>"delete successfully"]);
-
-        
     }
 }
