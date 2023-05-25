@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthenticationController;
 use App\Http\Controllers\LocationController;
 use App\Http\Controllers\DroneController;
 use App\Http\Controllers\FarmController;
@@ -34,10 +35,17 @@ Route::delete('/location/{id}',[LocationController::class,'destroy']);
 
 // api route of drones
 Route::get("/drones", [DroneController::class, "index"]);
+<<<<<<< HEAD
 Route::post("/drones", [DroneController::class, "store"]);
 Route::get("/drones/{id}", [DroneController::class, "show"]);
 Route::put("/drones/{id}", [DroneController::class, "update"]);
 Route::delete("/drones/{id}", [DroneController::class, "destroy"]);
+=======
+Route::post("/drone", [DroneController::class, "store"]);
+Route::get("/drone/{id}", [DroneController::class, "show"]);
+Route::put("/drone/{id}", [DroneController::class, "update"]);
+Route::delete("/drone/{id}", [DroneController::class, "destroy"]);
+>>>>>>> d4cc04933bb0e89c22aad08144f33b94fb7a8df8
 
 // get drone by drone_id
 Route::get("/drone/{id}", [DroneController::class, "showDroneByID"]);
@@ -45,14 +53,26 @@ Route::get("/drone/{id}", [DroneController::class, "showDroneByID"]);
 // Show current latitude+longitude of drone droneId
 Route::get("/currentDrone/{id}/location", [DroneController::class, "showCurrentDrone"]);
 
+<<<<<<< HEAD
 // api route of user 
+=======
+
+// API ROUTE OF USER
+>>>>>>> d4cc04933bb0e89c22aad08144f33b94fb7a8df8
 Route::get("/users", [UserController::class, "index"]);
 Route::post("/user", [UserController::class, "store"]);
 Route::get("/user/{id}", [UserController::class, "show"]);
 Route::put("/user/{id}", [UserController::class, "update"]);
 Route::delete("/user/{id}", [UserController::class, "destroy"]);
 
+<<<<<<< HEAD
 // api route of plan
+=======
+Route::post("/login", [UserController::class, "login"]);
+
+
+// API ROUTE OF PLAN
+>>>>>>> d4cc04933bb0e89c22aad08144f33b94fb7a8df8
 Route::get("/plans", [PlanController::class, "index"]);
 Route::post("/plan", [PlanController::class, "store"]);
 Route::get("/plan/{id}", [PlanController::class, "show"]);
@@ -69,7 +89,19 @@ Route::delete("/map/{id}", [MapController::class, "destroy"]);
 // get map drone farm
 Route::get("/maps/{name}/{id}", [MapController::class, "showDroneFarm"]);
 
+<<<<<<< HEAD
 // api route of farm
+=======
+// delete image
+Route::delete("/maps/{name}/{id}", [MapController::class, "deleteImage"]);
+
+// add new image in map to farm
+Route::post("/maps/{name}/{id}", [MapController::class, "storeNewImage"]);
+
+
+
+// API ROUTE OF FARM
+>>>>>>> d4cc04933bb0e89c22aad08144f33b94fb7a8df8
 Route::get("/farms", [FarmController::class, "index"]);
 Route::post("/farms", [FarmController::class, "store"]);
 Route::get("/farms/{id}", [FarmController::class, "show"]);

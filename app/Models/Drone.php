@@ -41,7 +41,7 @@ class Drone extends Model
                 "location_id"
             ]
         );
-        $drones= self::updateOrcreate(["id"=>$id],$drone);
+        $drones= self::updateOrCreate(["id"=>$id],$drone);
         return $drones;
     }
     public function user():BelongsTo
@@ -56,9 +56,9 @@ class Drone extends Model
     {
         return $this->belongsTo(Location::class);
     }
-    public function plans()
+    public function plans():HasMany
     {
-        return $this->belongsToMany(Plan::class,'drone_plans')->withTimestamps();
+        return $this->hasMany(Plan::class);
     }
 }
 

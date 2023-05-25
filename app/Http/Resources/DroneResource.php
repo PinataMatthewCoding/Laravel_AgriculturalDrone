@@ -24,10 +24,16 @@ class DroneResource extends JsonResource
             "battery"=>$this->battery,
             "playload_cap"=>$this->playload_cap,
             "max_speed"=>$this->max_speed,
-
             "user_id"=>$this->user,
             "location_id"=>$this->location,
+<<<<<<< HEAD
             // "map_id"=>$this->maps,
+=======
+            "map_id"=>$this->maps,
+            "plans"=>$this->plans,
+           
+
+>>>>>>> d4cc04933bb0e89c22aad08144f33b94fb7a8df8
         ];
     }
 }

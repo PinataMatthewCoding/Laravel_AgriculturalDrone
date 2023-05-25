@@ -25,8 +25,15 @@ class StoreInstructionRequest extends FormRequest
     public function rules(): array
     {
         return [
+<<<<<<< HEAD
             "brand"=>"required",
             "type"=>"required|unique:instructions",
+=======
+
+            "name"=>"required",
+            "band"=>"required",
+            "type"=>"required",
+>>>>>>> d4cc04933bb0e89c22aad08144f33b94fb7a8df8
             "max_flight_time"=>"required",
             "description"=>"required",
             "instruction"=>"required",

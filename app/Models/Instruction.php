@@ -4,12 +4,15 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Instruction extends Model
 {
     use HasFactory;
     protected $fillable = [
-        "brand",
+        "name",
+        "band",
         "type",
         "max_flight_time",
         "description",
@@ -19,7 +22,8 @@ class Instruction extends Model
     public static function store($request, $id=null){
         $instructions = $request->only(
             [
-                "brand",
+                "name",
+                "band",
                 "type",
                 "max_flight_time",
                 "description",
@@ -29,4 +33,9 @@ class Instruction extends Model
         $instructions = self::updateOrcreate(["id"=>$id],$instructions);
         return $instructions;
     }
+    public function plan():HasOne
+    {
+        return $this->HasOne(Plan::class);
+    }
+   
 }
