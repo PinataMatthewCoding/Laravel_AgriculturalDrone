@@ -20,7 +20,7 @@ class MapResource extends JsonResource
             "typeImage"=>$this->typeImage,
             "description"=>$this->description,
             "drone_id"=>$this->drone,
-            "farms"=>$this->farms,
+            // "farm"=>$this->farms,
             
         ];
     }

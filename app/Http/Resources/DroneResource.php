@@ -26,8 +26,8 @@ class DroneResource extends JsonResource
             "max_speed"=>$this->max_speed,
             "user_id"=>$this->user,
             "location_id"=>$this->location,
-            "map_id"=>$this->maps,
-            "plans"=>$this->plans,
+            "instruction_id"=>$this->instructions,
+            
            
 
         ];

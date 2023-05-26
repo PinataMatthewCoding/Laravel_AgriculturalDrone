@@ -13,6 +13,7 @@ class Plan extends Model
 {
     use HasFactory;
     protected $fillable = [
+        "name",
         "pesticide_type",
         "seed_type",
         "weight",
@@ -27,6 +28,7 @@ class Plan extends Model
     public static function store($request ,$id=null){
         $plan = $request->only(
             [
+                "name",
                 "pesticide_type",
                 "seed_type",
                 "weight",

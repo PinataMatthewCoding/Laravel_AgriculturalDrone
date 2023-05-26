@@ -18,7 +18,7 @@ class InstructionResource extends JsonResource
             "id"=>$this->id,
             "brand"=>$this->brand,
             "type"=>$this->type,
-            "max_flight_time"=>$this->max_flight_time,
+            "is_action"=>$this->is_action,
             "description"=>$this->description,
             "instruction"=>$this->instruction,
         ];

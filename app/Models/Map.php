@@ -15,7 +15,8 @@ class Map extends Model
         "name",
         "typeImage",
         "description",
-        "drone_id"
+        "drone_id",
+        "farm_id"
     ];
 
     // CREATE  AND UPDATE MAPS
@@ -25,7 +26,8 @@ class Map extends Model
                 "name",
                 "typeImage",
                 "description",
-                "drone_id"
+                "drone_id",
+                "farm_id"
             ]
         );
         $map= self::updateOrcreate(["id"=>$id],$map);
@@ -41,8 +43,8 @@ class Map extends Model
     {
         return $this->belongsTo(Drone::class);
     }
-    public function farms():HasMany
+    public function farm():BelongsTo
     {
-        return $this->hasMany(Farm::class);
+        return $this->belongsTo(Farm::class);
     }
 }

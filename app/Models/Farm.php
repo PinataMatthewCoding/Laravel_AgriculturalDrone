@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Farm extends Model
 {
@@ -12,7 +13,7 @@ class Farm extends Model
     protected $fillable = [
         "name",
         "address",
-        "map_id"
+        
     
     ];
     public static function store($request ,$id=null){
@@ -20,14 +21,14 @@ class Farm extends Model
             [
                 "name",
                 "address",
-                "map_id"
+              
             ]
         );
         $farms =self::updateOrCreate(["id"=>$id],$farm);
         return $farms; 
     }
-    public function map():BelongsTo
+    public function maps():HasMany
     {
-        return $this->belongsTo(Map::class);
+        return $this->hasMany(Map::class);
     }
 }

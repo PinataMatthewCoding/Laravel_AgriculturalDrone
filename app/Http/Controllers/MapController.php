@@ -3,11 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreMapRequest;
+use App\Http\Resources\MapImageResource;
 use App\Http\Resources\MapResource;
 use App\Http\Resources\ShowMapResource;
 use App\Models\Farm;
 use App\Models\Map;
+use GuzzleHttp\Psr7\Request;
 
+use function PHPSTORM_META\map;
 
 class MapController extends Controller
 {
@@ -18,11 +21,13 @@ class MapController extends Controller
         $maps = MapResource::collection($maps);
         return response()->json(["data"=>true ,"maps"=>$maps], 200);
     }
-
-   
-   
-
-
+ // -------------------------show list image--------------------
+    public function listImage() {
+        $maps = Map::all();
+        $maps = MapImageResource::collection($maps);
+        return response()->json(["data"=>true ,"maps"=>$maps], 200);
+    }
+    
     // STORE A NEWLY CREATED RESOURCE IN STORAGE.
 
     public function store(StoreMapRequest $request)
@@ -31,15 +36,18 @@ class MapController extends Controller
         return response()->json(["data"=>true, "map" =>$map],200);
     }
 // -----------------create new image in map to farm---------------------------
-    public function storeNewImage($name,$id){
-        $farm = Farm::where('id',$id)->first();
-        if($farm){
-            $map = Map::where('name',$name)->first();
-            $map->typeImage->add([
-                'typeImage' => request('typeImage')
+    public function storeNewImage(string $name, string $farm_id)
+    {
+        $farm = Farm::where('id', $farm_id)->first();
+        if ($farm) {
+            $map = Map::where('name', $name)->first();
+            if ($map) {
+                $map->update([
+                    "typeImage"=>request('typeImage'),
             ]);
-            return $map;
-        }
+                return response()->json(['success' => true, 'data' => $map], 201);
+            } 
+        } 
     }
 
 
@@ -54,24 +62,20 @@ class MapController extends Controller
         $map = new ShowMapResource($map);
         return response()->json(["data"=>true, "maps" =>$map],200);
     }
-
-
+   
+    
     // ============== get map nameofprovince and farm id ===============
-    public function showDroneFarm($name,$id){
-        $name = Map::where('name', $name)->first();
-
-        $farmID= Farm::where('id',$id)->first();
-        if ($farmID) {
-            $name =Map::where('name', $name)->first();
-            if($name){
-                return response()->json(['image' => $name->typeImage]);
-            } 
-        }    
-
-        else {
-            return response()->json(['message' => 'image not found'], 404);
+    public function showDroneFarm(string $name, string $farm_id)
+    {
+        $map = Map::where('name', $name)->first();
+        if (!isset($map)) {
+            return response()->json(['success' => false, 'message' => $name ], 401);
         }
-
+        $farms = Farm::where('id', $farm_id)->first();
+        if (empty($farms)) {
+            return response()->json(['success' => false, 'message' => "farm id: " . $farm_id . " doesn't exsit"], 401);
+        }
+        return response()->json(['success' => true, 'message' => 'Request farm successfully', 'data' =>$map->typeImage], 200);
     }
 
     // UPDATE THE SPECIFIED RESOURCE IN STORAGE.
@@ -93,15 +97,28 @@ class MapController extends Controller
     }
 
     // -------------------------delete only image in map-----------------------------
-    public function deleteImage($name, $id)
-    {
-        $farm = Farm::where('id', $id)->first();
-        if ($farm) {
-            $map =Map::where('name', $name)->first();
-            if($map->typeImage){
-                return response()->json(['message'=>'delete success','data'=>$map->delete()]) ;   
-            }
-            
+    
+    public function deleteImage(string $name, string $farm_id){
+        $map = Map::where('name', $name)->first();
+         if (!isset($map)) {
+            return response()->json(['success' => false, 'message' => " name: " . $name . " doesn't exsit"], 401);
+        }
+        $farms = Farm::where('id', $farm_id)->first();
+        if (empty($farms)) {
+            return response()->json(['success' => false, 'message' => "farm id: " . $farm_id . " doesn't exsit"], 401);
+        }
+        if($map->typeImage){
+            $map->typeImage = "null";
+            $map->save();
+            return response()->json(['success' => true, 'message' => 'Maps has been deleted successfully' ], 200);
         }
     }
+
 }
+
+
+
+    
+
+
+

@@ -37,6 +37,7 @@ class StoreDroneRequest extends FormRequest
             "battery"=>"required|min:2",
             "playload_cap"=>"required|min:2",
             "max_speed"=>"required|min:2",
+            "instruction_id"=>"required",
         ];
     }
 }

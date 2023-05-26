@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StorePlanRequest;
 use App\Http\Resources\PlanResource;
 use App\Http\Resources\ShowPlanResource;
+use App\Models\Instruction;
+use App\Models\Map;
 use App\Models\Plan;
 
 class PlanController extends Controller
@@ -51,5 +53,19 @@ class PlanController extends Controller
         }
         $plan->delete();
         return response()->json(["data"=>true ,"plans"=>"delte successfully"], 200);
+    }
+
+
+    // ------------show plan name -------------------------------
+    public function showPlanName(string $names)
+    {
+        $plans = Plan::where('name', $names)->first();
+        if($plans){
+            return response()->json(["data"=>true ,"introductions"=>$plans], 200);
+        }
+        else{
+            return response()->json(["data"=>true ,"introductions"=>"not found " . $names], 404);;
+        }
+
     }
 }

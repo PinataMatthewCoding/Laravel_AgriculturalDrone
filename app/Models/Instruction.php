@@ -11,23 +11,23 @@ class Instruction extends Model
 {
     use HasFactory;
     protected $fillable = [
-        "name",
         "band",
         "type",
-        "max_flight_time",
+        "is_action",
         "description",
         "instruction",
+        "drone_id"
     ];
     // CREATE  AND UPDATE INSTRUCTION
     public static function store($request, $id=null){
         $instructions = $request->only(
             [
-                "name",
                 "band",
                 "type",
-                "max_flight_time",
+                "is_action",
                 "description",
                 "instruction",
+                "drone_id"
             ]
         );
         $instructions = self::updateOrcreate(["id"=>$id],$instructions);
@@ -37,5 +37,8 @@ class Instruction extends Model
     {
         return $this->HasOne(Plan::class);
     }
+
+
+    
    
 }

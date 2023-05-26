@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Drone extends Model
 {
@@ -19,7 +20,6 @@ class Drone extends Model
         "battery",
         "playload_cap",
         "max_speed",
-        
         "user_id",
         "location_id"
     ];
@@ -36,9 +36,8 @@ class Drone extends Model
                 "battery",
                 "playload_cap",
                 "max_speed",
-
                 "user_id",
-                "location_id"
+                "location_id",
             ]
         );
         $drones= self::updateOrCreate(["id"=>$id],$drone);
@@ -59,6 +58,11 @@ class Drone extends Model
     public function plans():HasMany
     {
         return $this->hasMany(Plan::class);
+    }
+
+    public function instructions():HasMany
+    {
+        return $this->hasMany(Instruction::class);
     }
 }
 

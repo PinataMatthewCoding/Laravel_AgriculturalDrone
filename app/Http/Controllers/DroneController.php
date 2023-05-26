@@ -5,6 +5,7 @@ use App\Http\Requests\StoreDroneRequest;
 use App\Http\Resources\DroneResource;
 use App\Http\Resources\ShowDroneResource;
 use App\Models\Drone;
+use App\Models\Instruction;
 use App\Models\Plan;
 use Illuminate\Http\Request;
 
@@ -21,7 +22,6 @@ class DroneController extends Controller
     // STORE A NEWLY CREATED RESOURCE IN STORAGE.
     public function store(Request $request)
     {
-        
         $drone = Drone::store($request);
         return response()->json(["success"=>true, "data" =>$drone],200);
     }
@@ -46,6 +46,22 @@ class DroneController extends Controller
         return response()->json(['success'=>true,'drone'=>$drone],200);
     }
 
+    
+    // update drone by id
+    public function droneupdate($drone_id){
+        $drone = Drone::where('drone_id', $drone_id)->first();
+        $instructions = $drone->instructions();
+    
+        $instructions->update([
+            "band" => request('band'),
+            "type" => request('type'),
+            "is_action" => request('is_action'),
+            "description" => request('description'),
+            "instruction" => request('instruction')
+        ]);
+    
+        return $instructions->get();
+    }
 
     
     // =================== Show current latitude+longitude of drone D23===============
@@ -71,8 +87,6 @@ class DroneController extends Controller
         return response()->json(["data"=>true, "drone" =>$drone],200);
     }
 
-
-
     // REMOVE THE SPECIFIED RESOURCE FROM STORAGE.
     public function destroy(string $id)
     {
@@ -84,8 +98,9 @@ class DroneController extends Controller
         return response()->json(["data"=>true ,"drone"=>"delete successfully"], 201);
     }
 
+    
+}
 
 
 
     
-}
