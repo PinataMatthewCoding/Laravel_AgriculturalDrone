@@ -76,6 +76,7 @@ class MapController extends Controller
             return response()->json(['success' => false, 'message' => "farm id: " . $farm_id . " doesn't exsit"], 401);
         }
         return response()->json(['success' => true, 'message' => 'Request farm successfully', 'data' =>$map->typeImage], 200);
+
     }
 
     // UPDATE THE SPECIFIED RESOURCE IN STORAGE.

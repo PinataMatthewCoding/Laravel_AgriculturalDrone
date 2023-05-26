@@ -5,9 +5,6 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Exceptions\HttpResponseException;
-use Illuminate\Validation\Rule;
-
-
 
 class StoreUserRequest extends FormRequest
 {
@@ -32,22 +29,9 @@ class StoreUserRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name'=>[
-                'required',
-                'min:5',
-                'max:200',
-                Rule::unique('users')->ignore($this->id),   
-            ],
-            'email'=>[
-                'required',
-                'max:200',
-                Rule::unique('users')->ignore($this->id), 
-            ],
-            'password'=>[
-                'required',
-                'max:100',
-                Rule::unique('users')->ignore($this->id)
-            ]
+            "name"=>"required|min:5|max:50|unique:users",
+            "email"=>"required|min:14|max:50|unique:users",
+            "password"=>"required|min:8|max:50",
         ];
     }
 }

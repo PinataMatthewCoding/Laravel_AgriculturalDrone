@@ -7,7 +7,7 @@ use App\Http\Resources\ShowInstructionResource;
 use App\Models\Instruction;
 class InstructionController extends Controller
 {
-    // DISPLAY A LISTING OF THER RESOURCE
+    // display a listing of ther resource.
     public function index()
     {
         $instructions = Instruction::all();
@@ -15,14 +15,14 @@ class InstructionController extends Controller
         return response()->json(["data"=>true, "instruction"=>$instructions], 200);
     }
 
-    // STORE A NEWLY CREATED RESOURCE IN STORAGE.
+    // store a newly created resource in storage.
     public function store (StoreInstructionRequest $request)
     {
         $instructions = Instruction::store($request);
         return response()->json(["data"=>true, "instruction"=>$instructions],200);
     }
 
-    // DISPLAY THE SPECIFIED RESOURCE.
+    // display the specified resource.
     public function show(string $id)
     {
         $instructions = Instruction::find($id);
@@ -33,14 +33,14 @@ class InstructionController extends Controller
         return response()->json(["data"=>true, "instruction"=>$instructions],200);
     }
 
-    // UPDATE THE SPECIFIED RESOURCE IN STORAGE.
+    // update the specified resource in storage.
     public function update(StoreInstructionRequest $request, string $id)
     {
         $instructions = Instruction::store($request,$id);
         return response()->json(["data"=>true, "instruction"=>$instructions],200);
     }
 
-    // REMOVE THE SPECIFIED RESOURCE FROM STORAGE.
+    // remove the specifide resource from storage
     public function destroy(string $id)
     {
         $instructions = Instruction::find($id);

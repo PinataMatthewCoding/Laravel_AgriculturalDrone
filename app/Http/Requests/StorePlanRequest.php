@@ -33,8 +33,8 @@ class StorePlanRequest extends FormRequest
             "weight"=>"required",
             "height"=>"required",
             "shape"=>"required",
-            "start_time"=>"required",
-            "end_time"=>"required",
+            "start_time"=>"required|unique:plans",
+            "end_time"=>"required|unique:plans",
         ];
     }
 }

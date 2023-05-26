@@ -18,7 +18,7 @@ class Instruction extends Model
         "instruction",
         "drone_id"
     ];
-    // CREATE  AND UPDATE INSTRUCTION
+    // Create and update instruction
     public static function store($request, $id=null){
         $instructions = $request->only(
             [

@@ -16,6 +16,7 @@ class Location extends Model
         "lngtiude",
        
     ];
+    // Create and update location
     public static function store($request ,$id=null){
         $locaion = $request->only(
             [
@@ -28,6 +29,7 @@ class Location extends Model
         $locations->plans()->sync($plans);
         return $locations; 
     }
+
     public function map():BelongsTo
     {
         return $this->belongsTo(Map::class);

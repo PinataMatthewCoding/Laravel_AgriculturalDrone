@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 
 class DroneController extends Controller
 {
-    // DISPLAY A LISTING OF THER RESOURCE
+    // display a listing of ther resource.
     public function index()
     {
         $drones = Drone::all();
@@ -19,15 +19,14 @@ class DroneController extends Controller
         return response()->json(["data"=>true ,"drones"=>$drones], 200);
     }
 
-    // STORE A NEWLY CREATED RESOURCE IN STORAGE.
-    public function store(Request $request)
+    // store a newly created resource in storage.
+    public function store(StoreDroneRequest $request)
     {
         $drone = Drone::store($request);
         return response()->json(["success"=>true, "data" =>$drone],200);
     }
 
-    // DISPLAY THE SPECIFIED RESOURCE.
-    //================ show drone by id =====================
+    // display the specified resource.
     public function show(string $id)
     {
         $drone =Drone::find($id);
@@ -38,13 +37,14 @@ class DroneController extends Controller
         return response()->json(['success'=>true,'drone'=>$drone],200);
     }
 
-    //================= get drone by droneId =================
+    //================= get drone by droneId (B23) =================
     public function showDroneByID(string $id)
     {
         $drone = Drone::where('drone_id', $id)->first();
         $drone = new ShowDroneResource($drone);
         return response()->json(['success'=>true,'drone'=>$drone],200);
     }
+
 
     
     // update drone by id
@@ -63,8 +63,12 @@ class DroneController extends Controller
         return $instructions->get();
     }
 
+    // ============ Show current latitude+longitude of drone D23===============
+
+
     
     // =================== Show current latitude+longitude of drone D23===============
+
         public function showCurrentDrone(Request $request){
         $id = $request->route('id');
 
@@ -79,7 +83,9 @@ class DroneController extends Controller
 
 
 
+
     // UPDATE THE SPECIFIED RESOURCE IN STORAGE.
+
     public function update(StoreDroneRequest $request, string $id)
     {
         // dd(0);
@@ -87,7 +93,9 @@ class DroneController extends Controller
         return response()->json(["data"=>true, "drone" =>$drone],200);
     }
 
+
     // REMOVE THE SPECIFIED RESOURCE FROM STORAGE.
+
     public function destroy(string $id)
     {
         $drone = Drone::find($id);

@@ -8,7 +8,7 @@ use App\Models\Farm;
 
 class FarmController extends Controller
 {
-    // DISPLAY A LISTING OF THER RESOURCE
+    // display a listing of ther resource.
     public function index()
     {
         $farm = Farm::all();
@@ -16,7 +16,7 @@ class FarmController extends Controller
         return response()->json(["data"=>true ,"farms"=>$farm], 200);
     }
 
-    // STORE A NEWLY CREATED RESOURCE IN STORAGE.
+    // store a newly created resource in storage.
     public function store(StoreFarmRequest $request)
     {
         $farm = Farm::store($request);
@@ -24,7 +24,7 @@ class FarmController extends Controller
 
     }
 
-    // DISPLAY THE SPECIFIED RESOURCE.
+    // display the specified resource.
     public function show(string $id)
     {
         $farm = Farm::find($id);
@@ -35,14 +35,14 @@ class FarmController extends Controller
         return response()->json(["data"=>true ,"farms"=>$farm], 200);
     }
 
-    // UPDATE THE SPECIFIED RESOURCE IN STORAGE.
+    // update the specified resource in storage.
     public function update(StoreFarmRequest $request, string $id)
     {
         $farm = Farm::store($request,$id);
         return response()->json(["data"=>true ,"farms"=>$farm], 200);
     }
 
-    // REMOVE THE SPECIFIED RESOURCE FROM STORAGE.
+    // remove the specifide resource from storage
     public function destroy(string $id)
     {
         $farm = Farm::find($id);

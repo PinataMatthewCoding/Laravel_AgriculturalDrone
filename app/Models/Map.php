@@ -19,7 +19,7 @@ class Map extends Model
         "farm_id"
     ];
 
-    // CREATE  AND UPDATE MAPS
+    // Create and update maps
     public static function store($request, $id=null){
         $map = $request->only(
             [

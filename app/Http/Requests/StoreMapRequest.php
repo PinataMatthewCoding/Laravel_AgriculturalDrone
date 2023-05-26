@@ -29,11 +29,12 @@ class StoreMapRequest extends FormRequest
     public function rules(): array
     {
         return [
+
             "name"=>[
                  'required',
                  'min:2',
                  'max:200',
-                  Rule::unique('maps')->ignore($this->id)
+                Rule::unique('maps')->ignore($this->id)
             ],
             "typeImage"=>[
                 'required',
@@ -43,7 +44,6 @@ class StoreMapRequest extends FormRequest
                 'required',
                 'min:2',
                 'max:200',
-                Rule::unique('maps')->ignore($this->id)
             ],
             "drone_id"=>[
                 'required',

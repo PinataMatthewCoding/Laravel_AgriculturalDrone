@@ -8,7 +8,7 @@ use App\Models\Location;
 
 class LocationController extends Controller
 {
-    // DISPLAY A LISTING OF THER RESOURCE
+    // display a listing of ther resource.
     public function index()
     {
         $location =Location::all();
@@ -16,14 +16,14 @@ class LocationController extends Controller
         return response()->json(["data"=>true, "location"=>$location],200);
     }
 
-    // STORE A NEWLY CREATED RESOURCE IN STORAGE.
+    // store a newly created resource in storage.
     public function store(StoreLocationmRequest $request)
     {
         $location =Location::store($request);
         return response()->json(["data"=>true, "location"=>$location],200);
     }
 
-    // DISPLAY THE SPECIFIED RESOURCE.
+    // display the specified resource.
     public function show(string $id)
     {
         $location =Location::find($id);
@@ -34,14 +34,14 @@ class LocationController extends Controller
         return response()->json(['success'=>true,'location'=>$location],200);
     }
 
-    // UPDATE THE SPECIFIED RESOURCE IN STORAGE.
+    // update the specified resource in storage.
     public function update(StoreLocationmRequest $request, string $id)
     {
         $location = Location::store($request,$id);
         return response()->json(["data"=>true, "location"=>$location],200);
     }
 
-    // REMOVE THE SPECIFIED RESOURCE FROM STORAGE.
+    // remove the specifide resource from storage
     public function destroy(string $id)
     {
         $location =Location::find($id);

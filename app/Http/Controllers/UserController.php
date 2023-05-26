@@ -5,19 +5,13 @@ use App\Http\Requests\StoreUserRequest;
 use App\Http\Resources\ShowUserResource;
 use App\Http\Resources\UserResource;
 use App\Models\User;
-
-use Illuminate\Http\Request;
-use Illuminate\Contracts\Cache\Store;
+use GuzzleHttp\Psr7\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Str;
-
-
 
 class UserController extends Controller
 {
-    // DISPLAY A LISTING OF THER RESOURCE
-
+    // display a listing of ther resource.
     public function index()
     {
         $user = User::all();
@@ -25,8 +19,8 @@ class UserController extends Controller
         return response()->json(["data"=>true ,"users"=>$user], 200);
     }
 
-    // STORE A NEWLY CREATED RESOURCE IN STORAGE.
-    public function store(Request $request)
+    // store a newly created resource in storage.
+    public function store(StoreUserRequest $request)
     {
         $user = User::create([
             'name' => request('name'),
@@ -50,7 +44,7 @@ class UserController extends Controller
         return response()->json(['messaage' =>'Invalid creadentail'],401);
     }
 
-    // DISPLAY THE SPECIFIED RESOURCE.
+    // display the specified resource.
     public function show(string $id)
     {
         $user =User::find($id);
@@ -61,14 +55,14 @@ class UserController extends Controller
         return response()->json(["data"=>true ,"users"=>$user], 200);
     }
 
-    // UPDATE THE SPECIFIED RESOURCE IN STORAGE.
+    // update the specified resource in storage.
     public function update(StoreUserRequest $request, string $id)
     {
         $user =User::store($request,$id);
         return response()->json(["data"=>true ,"users"=>$user], 200);
     }
 
-    // REMOVE THE SPECIFIED RESOURCE FROM STORAGE.
+    // remove the specifide resource from storage
     public function destroy(string $id)
     {
         $user =User::find($id);
