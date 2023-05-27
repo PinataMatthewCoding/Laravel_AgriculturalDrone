@@ -5,7 +5,13 @@ use App\Http\Requests\StoreUserRequest;
 use App\Http\Resources\ShowUserResource;
 use App\Http\Resources\UserResource;
 use App\Models\User;
+<<<<<<< HEAD
 
+=======
+use GuzzleHttp\Psr7\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+>>>>>>> be5c5059756b77d09aa35277a84595feee92e96b
 
 class UserController extends Controller
 {
@@ -17,6 +23,11 @@ class UserController extends Controller
         return response()->json(["data"=>true ,"users"=>$user], 200);
     }
 
+<<<<<<< HEAD
+=======
+   
+
+>>>>>>> be5c5059756b77d09aa35277a84595feee92e96b
     // display the specified resource.
     public function show(string $id)
     {
@@ -28,12 +39,16 @@ class UserController extends Controller
         return response()->json(["data"=>true ,"users"=>$user], 200);
     }
 
+<<<<<<< HEAD
     // update the specified resource in storage.
     public function update(StoreUserRequest $request, string $id)
     {
         $user = User::store($request,$id);
         return response()->json(["data"=>true ,"users"=>$user], 200);
     }
+=======
+    
+>>>>>>> be5c5059756b77d09aa35277a84595feee92e96b
 
     // remove the specifide resource from storage
     public function destroy(string $id)

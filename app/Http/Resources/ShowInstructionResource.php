@@ -16,10 +16,9 @@ class ShowInstructionResource extends JsonResource
     {
         return [
             "id"=>$this->id,
-            "name"=>$this->name,
             "band"=>$this->band,
             "type"=>$this->type,
-            "max_flight_time"=>$this->max_flight_time,
+            "is_action"=>$this->is_action,
             "description"=>$this->description,
         ];
     }

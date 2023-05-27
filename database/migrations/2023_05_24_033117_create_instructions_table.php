@@ -15,9 +15,10 @@ return new class extends Migration
             $table->id();
             $table->string("band");
             $table->string("type");
-            $table->string("max_flight_time");
+            $table->boolean("is_action");
             $table->string("description");
             $table->string("instruction");
+            $table->foreignId('drone_id')->constrained(table:'drones')->onDelete('cascade');
             $table->timestamps();
         });
     }

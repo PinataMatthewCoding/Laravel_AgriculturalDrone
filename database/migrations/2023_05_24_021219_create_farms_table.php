@@ -15,8 +15,6 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('address');
-            $table->unsignedBigInteger("map_id");
-            $table->foreign("map_id")->references("id")->on("maps")->onDelete("cascade");
             $table->timestamps();
         });
     }

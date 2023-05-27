@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('plans', function (Blueprint $table) {
             $table->id();
+            $table->string("name");
             $table->string('pesticide_type');
             $table->string('seed_type');
             $table->integer('weight');
@@ -22,8 +23,6 @@ return new class extends Migration
             $table->dateTime('end_time');
             $table->unsignedBigInteger("drone_id");
             $table->foreign("drone_id")->references("id")->on("drones")->onDelete("cascade");
-            $table->unsignedBigInteger("instruction_id");
-            $table->foreign("instruction_id")->references("id")->on("instructions")->onDelete("cascade");
             $table->timestamps();
         });
     }
@@ -34,6 +33,5 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('plans');
-
     }
 };

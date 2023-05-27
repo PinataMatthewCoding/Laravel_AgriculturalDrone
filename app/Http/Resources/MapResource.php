@@ -21,7 +21,12 @@ class MapResource extends JsonResource
             "description"=>$this->description,
             //==================
             "drone_id"=>$this->drone,
+<<<<<<< HEAD
             "farms"=>$this->farms,
+=======
+            // "farm"=>$this->farms,
+            
+>>>>>>> be5c5059756b77d09aa35277a84595feee92e96b
         ];
     }
 }

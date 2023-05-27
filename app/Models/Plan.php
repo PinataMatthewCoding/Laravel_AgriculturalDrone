@@ -12,6 +12,7 @@ class Plan extends Model
 {
     use HasFactory;
     protected $fillable = [
+        "name",
         "pesticide_type",
         "seed_type",
         "weight",
@@ -26,6 +27,7 @@ class Plan extends Model
     public static function store($request ,$id=null){
         $plan = $request->only(
             [
+                "name",
                 "pesticide_type",
                 "seed_type",
                 "weight",
@@ -40,15 +42,28 @@ class Plan extends Model
         $plans =self::updateOrCreate(['id'=>$id],$plan);
         return $plans; 
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> be5c5059756b77d09aa35277a84595feee92e96b
 
     public function drones()
     {
         return $this->belongsToMany(Drone::class,'drone_plans')->withTimestamps();
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> be5c5059756b77d09aa35277a84595feee92e96b
     public function locations():BelongsToMany
     {
         return $this->belongsToMany(Location::class,'location_plans');
     }
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> be5c5059756b77d09aa35277a84595feee92e96b
     public function drone():BelongsTo
     {
         return $this->belongsTo(Drone::class);
@@ -58,4 +73,8 @@ class Plan extends Model
     {
         return $this->HasOne(Instruction::class);
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> be5c5059756b77d09aa35277a84595feee92e96b
 }
