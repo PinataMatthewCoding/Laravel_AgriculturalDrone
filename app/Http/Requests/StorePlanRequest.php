@@ -30,7 +30,7 @@ class StorePlanRequest extends FormRequest
         return [
             "pesticide_type"=>"required",
             "seed_type"=>"required",
-            "weight"=>"required",
+            "width"=>"required",
             "height"=>"required",
             "shape"=>"required",
             "start_time"=>"required|unique:plans",

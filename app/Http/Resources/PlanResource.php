@@ -17,14 +17,14 @@ class PlanResource extends JsonResource
         return [
             "pesticide_type"=>$this->pesticide_type,
             "seed_type"=>$this->seed_type,
-            "weight"=>$this->weight,
+            "width"=>$this->weight,
             "height"=>$this->height,
             "shape"=>$this->shape,
             "start_time"=>$this->start_time,
             "end_time"=>$this->end_time,
             //===================
             "drones"=>$this->drone,
-            "instruction_id"=>$this->instruction_id
+
         ];
     }
 }

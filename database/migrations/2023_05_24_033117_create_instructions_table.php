@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('instructions', function (Blueprint $table) {
             $table->id();
-            $table->string("band");
+            $table->string("brand");
             $table->string("type");
             $table->boolean("is_action");
             $table->string("description");

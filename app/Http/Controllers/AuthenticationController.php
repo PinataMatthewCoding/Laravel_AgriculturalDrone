@@ -10,8 +10,7 @@ use Illuminate\Support\Facades\Hash;
 
 class AuthenticationController extends Controller
 {
-    //
-
+    // =========================register============================
     public function register(StoreUserRequest $request)
     {
         $user = User::create([
@@ -24,9 +23,10 @@ class AuthenticationController extends Controller
         
     }
 
+    // ===================login================================
 
-
-    public function login(Request $request){
+    public function login(Request $request)
+    {
         $creadentail = $request->only(['email','password']);
         if(Auth::attempt($creadentail)){
             $user = Auth::user();
@@ -37,10 +37,9 @@ class AuthenticationController extends Controller
         return response()->json(['messaage' =>'Invalid creadentail'],401);
     }
 
-
-    public function logout(Request $request){
- 
-        // dd(Auth::user());
+    // ====================logout=======================================
+    public function logout(Request $request)
+    {
         request()->user()->tokens()->delete();
         return response()->json(['messaage' =>'logout successful'],200);
     }

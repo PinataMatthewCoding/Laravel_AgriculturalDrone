@@ -35,7 +35,6 @@ Route::get("/showdrone/{id}", [DroneController::class, "showDroneByID"]);
 // Show current latitude+longitude of drone droneId
 Route::get("/currentDrone/{id}/location", [DroneController::class, "showCurrentDrone"]);
 
-
 // update drone
 Route::put("/drones_update/{drone_id}", [DroneController::class, "droneupdate"]);
 

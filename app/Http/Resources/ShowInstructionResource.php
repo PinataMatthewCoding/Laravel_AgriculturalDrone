@@ -16,7 +16,7 @@ class ShowInstructionResource extends JsonResource
     {
         return [
             "id"=>$this->id,
-            "band"=>$this->band,
+            "brand"=>$this->band,
             "type"=>$this->type,
             "is_action"=>$this->is_action,
             "description"=>$this->description,

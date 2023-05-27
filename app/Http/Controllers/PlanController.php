@@ -61,11 +61,10 @@ class PlanController extends Controller
     {
         $plans = Plan::where('name', $names)->first();
         if($plans){
-            return response()->json(["data"=>true ,"introductions"=>$plans], 200);
+            return response()->json(["data"=>true ,"plans"=>$plans], 200);
         }
         else{
-            return response()->json(["data"=>true ,"introductions"=>"not found " . $names], 404);;
+            return response()->json(["data"=>true ,"plans"=>"not found " . $names], 404);;
         }
-
     }
 }

@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string("name");
             $table->string('pesticide_type');
             $table->string('seed_type');
-            $table->integer('weight');
+            $table->integer('width');
             $table->integer('height');
             $table->string('shape');
             $table->dateTime('start_time');

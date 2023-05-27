@@ -11,7 +11,7 @@ class Instruction extends Model
 {
     use HasFactory;
     protected $fillable = [
-        "band",
+        "brand",
         "type",
         "is_action",
         "description",
@@ -22,7 +22,7 @@ class Instruction extends Model
     public static function store($request, $id=null){
         $instructions = $request->only(
             [
-                "band",
+                "brand",
                 "type",
                 "is_action",
                 "description",

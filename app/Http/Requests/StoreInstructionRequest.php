@@ -27,9 +27,10 @@ class StoreInstructionRequest extends FormRequest
         return [
             "brand"=>"required",
             "type"=>"required",
-            "max_flight_time"=>"required",
+            "is_action"=>"required",
             "description"=>"required",
             "instruction"=>"required",
+            "drone_id"=>"required"
         ];
     }
 }

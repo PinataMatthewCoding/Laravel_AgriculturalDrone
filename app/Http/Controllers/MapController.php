@@ -40,28 +40,23 @@ class MapController extends Controller
         return response()->json(["data"=>true, "map" =>$map],200);
     }
 
-    // create new image in map to farm 
-    public function storeNewImage($name,$id){
-        $farm = Farm::where('id',$id)->first();
-        if($farm){
-            $map = Map::where('name',$name)->first();
-            $map->typeImage->add([
-                'typeImage' => request('typeImage')
-            ]);
-        }
-    }
+    
 // -----------------create new image in map to farm---------------------------
     public function storeNewImage(string $name, string $farm_id)
     {
-        $farm = Farm::where('id', $farm_id)->first();
-        if ($farm) {
-            $map = Map::where('name', $name)->first();
-            if ($map) {
-                $map->update([
-                    "typeImage"=>request('typeImage'),
-            ]);
-                return response()->json(['success' => true, 'data' => $map], 201);
-            } 
+        $map = Map::where('name', $name)->first();
+        if (!isset($map)) {
+            return response()->json(['success' => false, 'message' => "map id: " . $name . " doesn't exsit" ], 401);
+        }
+        $farms = Farm::where('id', $farm_id)->first();
+        if (empty($farms)) {
+            return response()->json(['success' => false, 'message' => "farm id: " . $farm_id . " doesn't exsit"], 401);
+        }
+        if ($map) {
+            $map->update([
+                "typeImage"=>request('typeImage'),
+        ]);
+            return response()->json(['success' => true, 'data' => $map], 201);
         } 
     }
 
@@ -80,20 +75,7 @@ class MapController extends Controller
     }
 
 
-    // get image in map when (put name map and id of farm) 
-    public function showDroneFarm($name,$id){
-        $name = Map::where('name', $name)->first();
-        $farmID= Farm::where('id',$id)->first();
-        if ($farmID) {
-            $name =Map::where('name', $name)->first();
-            if($name){
-                return response()->json(['image' => $name->typeImage]);
-            } 
-        }
-        else {
-            return response()->json(['message' => 'image not found'], 404);
-        }
-    }
+    
    
     
     // ============== get map nameofprovince and farm id ===============
@@ -130,17 +112,6 @@ class MapController extends Controller
     }
 
 
-    // delete only image in map 
-    public function deleteImage($name, $id)
-    {
-        $farm = Farm::where('id', $id)->first();
-        if ($farm) {
-            $map =Map::where('name', $name)->first();
-            if($map->typeImage){
-                return response()->json(['message'=>'delete success','data'=>$map->delete()]) ;   
-            }
-        }
-    }
 
     // -------------------------delete only image in map-----------------------------
     
