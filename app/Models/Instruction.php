@@ -33,9 +33,9 @@ class Instruction extends Model
         $instructions = self::updateOrcreate(["id"=>$id],$instructions);
         return $instructions;
     }
+    
     public function plan():HasOne
     {
         return $this->HasOne(Plan::class);
     }
-   
 }

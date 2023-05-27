@@ -32,7 +32,7 @@ class Map extends Model
         return $map;
     }
     
-   
+
     public function locations():HasMany
     {
         return $this->hasMany(Location::class);

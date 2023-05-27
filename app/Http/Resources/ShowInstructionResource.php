@@ -21,7 +21,6 @@ class ShowInstructionResource extends JsonResource
             "type"=>$this->type,
             "max_flight_time"=>$this->max_flight_time,
             "description"=>$this->description,
-       
         ];
     }
 }

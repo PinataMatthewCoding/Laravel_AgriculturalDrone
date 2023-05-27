@@ -19,7 +19,6 @@ class Drone extends Model
         "battery",
         "playload_cap",
         "max_speed",
-        
         "user_id",
         "location_id"
     ];
@@ -36,7 +35,6 @@ class Drone extends Model
                 "battery",
                 "playload_cap",
                 "max_speed",
-
                 "user_id",
                 "location_id"
             ]
@@ -44,6 +42,7 @@ class Drone extends Model
         $drones= self::updateOrCreate(["id"=>$id],$drone);
         return $drones;
     }
+    
     public function user():BelongsTo
     {
         return $this->belongsTo(User::class);
@@ -61,7 +60,3 @@ class Drone extends Model
         return $this->hasMany(Plan::class);
     }
 }
-
-
-
-

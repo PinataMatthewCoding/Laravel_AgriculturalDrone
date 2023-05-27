@@ -36,7 +36,7 @@ class DroneController extends Controller
         return response()->json(['success'=>true,'drone'=>$drone],200);
     }
 
-    //================= get drone by droneId (B23) =================
+    // get drone by droneId (B23) 
     public function showDroneByID(string $id)
     {
         $drone = Drone::where('drone_id', $id)->first();
@@ -44,13 +44,7 @@ class DroneController extends Controller
         return response()->json(['success'=>true,'drone'=>$drone],200);
     }
 
-<<<<<<< HEAD
-    // ============ Show current latitude+longitude of drone D23===============
-=======
-
-    
-    // =================== Show current latitude+longitude of drone D23===============
->>>>>>> d4cc04933bb0e89c22aad08144f33b94fb7a8df8
+    // Show current latitude+longitude of drone D23
         public function showCurrentDrone(Request $request){
         $id = $request->route('id');
 
@@ -62,28 +56,14 @@ class DroneController extends Controller
         }
     }
 
-<<<<<<< HEAD
     // update the specified resource in storage.
-=======
-
-
-
-    // UPDATE THE SPECIFIED RESOURCE IN STORAGE.
->>>>>>> d4cc04933bb0e89c22aad08144f33b94fb7a8df8
     public function update(StoreDroneRequest $request, string $id)
     {
-        // dd(0);
         $drone = Drone::store($request, $id);
         return response()->json(["data"=>true, "drone" =>$drone],200);
     }
 
-<<<<<<< HEAD
     // remove the specifide resource from storage
-=======
-
-
-    // REMOVE THE SPECIFIED RESOURCE FROM STORAGE.
->>>>>>> d4cc04933bb0e89c22aad08144f33b94fb7a8df8
     public function destroy(string $id)
     {
         $drone = Drone::find($id);
@@ -93,9 +73,4 @@ class DroneController extends Controller
         $drone->delete();
         return response()->json(["data"=>true ,"drone"=>"delete successfully"], 201);
     }
-
-
-
-
-    
 }

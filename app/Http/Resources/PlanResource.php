@@ -22,6 +22,7 @@ class PlanResource extends JsonResource
             "shape"=>$this->shape,
             "start_time"=>$this->start_time,
             "end_time"=>$this->end_time,
+            //===================
             "drones"=>$this->drone,
             "instruction_id"=>$this->instruction_id
         ];

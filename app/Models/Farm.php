@@ -13,7 +13,6 @@ class Farm extends Model
         "name",
         "address",
         "map_id"
-    
     ];
     public static function store($request ,$id=null){
         $farm = $request->only(
@@ -26,6 +25,7 @@ class Farm extends Model
         $farms =self::updateOrCreate(["id"=>$id],$farm);
         return $farms; 
     }
+
     public function map():BelongsTo
     {
         return $this->belongsTo(Map::class);
