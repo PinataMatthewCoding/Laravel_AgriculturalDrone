@@ -24,9 +24,11 @@ class ShowDroneResource extends JsonResource
             "battery"=>$this->battery,
             "playload_cap"=>$this->playload_cap,
             "max_speed"=>$this->max_speed,
-            //================
             "user_id"=>$this->user,
             "location_id"=>$this->location,
+            "maps"=>$this->maps,
+            "plans"=>$this->plans,
+            "instructions"=>$this->instructions,
         ];
     }
 }

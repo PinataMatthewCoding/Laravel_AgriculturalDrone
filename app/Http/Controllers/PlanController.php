@@ -56,15 +56,15 @@ class PlanController extends Controller
     }
 
 
-    // ------------show plan name -------------------------------
-    public function showPlanName(string $names)
+    // ------------show plan name -----------------------
+    public function showPlanName(string $name)
     {
-        $plans = Plan::where('name', $names)->first();
+        $plans = Plan::where('name', $name)->with('instructions')->first();
         if($plans){
             return response()->json(["data"=>true ,"plans"=>$plans], 200);
         }
         else{
-            return response()->json(["data"=>true ,"plans"=>"not found " . $names], 404);;
+            return response()->json(["data"=>true ,"plans"=>"not found " . $name], 404);;
         }
     }
 }

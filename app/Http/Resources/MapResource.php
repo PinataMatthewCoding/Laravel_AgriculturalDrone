@@ -19,9 +19,8 @@ class MapResource extends JsonResource
             "name"=>$this->name,
             "typeImage"=>$this->typeImage,
             "description"=>$this->description,
-            //==================
             "drone_id"=>$this->drone,
-            "farms"=>$this->farms,
+            "farms"=>$this->farm,
         ];
     }
 }

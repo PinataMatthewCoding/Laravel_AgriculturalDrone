@@ -22,7 +22,6 @@ class ShowPlanResource extends JsonResource
             "shape"=>$this->shape,
             "start_time"=>$this->start_time,
             "end_time"=>$this->end_time,
-            //=====================
             "drones"=>$this->drone,
         ];
     }

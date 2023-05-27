@@ -27,17 +27,17 @@ class InstructionController extends Controller
     {
         $instructions = Instruction::find($id);
         if(!$instructions){
-            return response()->json(["instruction"=>"not found id"." " .$id],404);
+            return response()->json(["instructions"=>"not found id"." " .$id],404);
         }
         $instructions = new ShowInstructionResource($instructions);
-        return response()->json(["data"=>true, "instruction"=>$instructions],200);
+        return response()->json(["data"=>true, "instructions"=>$instructions],200);
     }
 
     // update the specified resource in storage.
     public function update(StoreInstructionRequest $request, string $id)
     {
         $instructions = Instruction::store($request,$id);
-        return response()->json(["data"=>true, "instruction"=>$instructions],200);
+        return response()->json(["data"=>true, "instructions"=>$instructions],200);
     }
 
     // remove the specifide resource from storage
@@ -45,9 +45,9 @@ class InstructionController extends Controller
     {
         $instructions = Instruction::find($id);
         if(!$instructions){
-            return response()->json(["data"=>false, "instruction"=>"not found id"." " .$id],404);
+            return response()->json(["data"=>false, "instructions"=>"not found id"." " .$id],404);
         }
         $instructions->delete();
-        return response()->json(["data"=>true, "instruction"=>"delete successfully"],201);
+        return response()->json(["data"=>true, "instructions"=>"delete successfully"],201);
     }
 }

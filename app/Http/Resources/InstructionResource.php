@@ -21,6 +21,8 @@ class InstructionResource extends JsonResource
             "is_action"=>$this->is_action,
             "description"=>$this->description,
             "instruction"=>$this->instruction,
+            "plan_id"=>$this->plan_id,
+            "drones"=>$this->drone,
         ];
     }
 }

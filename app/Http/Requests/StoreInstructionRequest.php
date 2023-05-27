@@ -30,6 +30,7 @@ class StoreInstructionRequest extends FormRequest
             "is_action"=>"required",
             "description"=>"required",
             "instruction"=>"required",
+            "plan_id"=>"required",
             "drone_id"=>"required"
         ];
     }

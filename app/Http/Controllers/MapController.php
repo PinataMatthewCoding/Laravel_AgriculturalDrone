@@ -22,8 +22,6 @@ class MapController extends Controller
         return response()->json(["data"=>true ,"maps"=>$maps], 200);
     }
 
-
-
  // -------------------------show list image--------------------
     public function listImage() {
         $maps = Map::all();
@@ -38,11 +36,9 @@ class MapController extends Controller
     {
        $map = Map::store($request);
         return response()->json(["data"=>true, "map" =>$map],200);
-    }
-
-    
-// -----------------create new image in map to farm---------------------------
-    public function storeNewImage(string $name, string $farm_id)
+    }    
+// -----------------update new image in map to farm---------------------------
+    public function updateNewImage(string $name, string $farm_id)
     {
         $map = Map::where('name', $name)->first();
         if (!isset($map)) {
@@ -59,11 +55,7 @@ class MapController extends Controller
             return response()->json(['success' => true, 'data' => $map], 201);
         } 
     }
-
-
-
     // DISPLAY THE SPECIFIED RESOURCE.
-
     public function show(string $id)
     {
         $map = Map::find($id);
@@ -73,11 +65,6 @@ class MapController extends Controller
         $map = new ShowMapResource($map);
         return response()->json(["data"=>true, "maps" =>$map],200);
     }
-
-
-    
-   
-    
     // ============== get map nameofprovince and farm id ===============
     public function showDroneFarm(string $name, string $farm_id)
     {
@@ -110,8 +97,6 @@ class MapController extends Controller
         $map->delete();
         return response()->json(["data"=>true ,"map"=>"delete successfully"], 201);
     }
-
-
 
     // -------------------------delete only image in map-----------------------------
     

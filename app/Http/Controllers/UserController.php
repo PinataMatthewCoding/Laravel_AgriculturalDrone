@@ -33,23 +33,4 @@ class UserController extends Controller
         return response()->json(["data"=>true ,"users"=>$user], 200);
     }
 
-
-    // update the specified resource in storage.
-    public function update(StoreUserRequest $request, string $id)
-    {
-        $user = User::store($request,$id);
-        return response()->json(["data"=>true ,"users"=>$user], 200);
-    }
-
-
-    // remove the specifide resource from storage
-    public function destroy(string $id)
-    {
-        $user = User::find($id);
-        if(!$user){
-            return response()->json(["data"=>"not found ".$id],404);
-        }
-        $user->delete(); 
-        return response()->json(["data"=>true ,"users"=>"successfully"], 200);
-    }
 }

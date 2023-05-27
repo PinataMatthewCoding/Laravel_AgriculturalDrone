@@ -49,11 +49,10 @@ class DroneController extends Controller
     }
 
     
-    // update drone by id
+    // update location in drone  by drone_id
     public function droneupdate($drone_id){
         $drone = Drone::where('drone_id', $drone_id)->first();
         $instructions = $drone->instructions();
-    
         $instructions->update([
             "brand" => request('brand'),
             "type" => request('type'),
@@ -76,16 +75,14 @@ class DroneController extends Controller
         }
     }
 
-    // UPDATE THE SPECIFIED RESOURCE IN STORAGE.
-
-    public function update(StoreDroneRequest $request, string $id)
+//  ===============update drone by dorne_id=======================
+    public function update(string $id)
     {
-        $drone = Drone::store($request, $id);
+        $drone = Drone::where('drone_id', $id)->first();
         return response()->json(["data"=>true, "drone" =>$drone],200);
     }
 
     // REMOVE THE SPECIFIED RESOURCE FROM STORAGE.
-
     public function destroy(string $id)
     {
         $drone = Drone::find($id);
