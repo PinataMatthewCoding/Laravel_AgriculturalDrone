@@ -19,30 +19,7 @@ class UserController extends Controller
         return response()->json(["data"=>true ,"users"=>$user], 200);
     }
 
-    // store a newly created resource in storage.
-    public function store(StoreUserRequest $request)
-    {
-        $user = User::create([
-            'name' => request('name'),
-            'email' => request('email'),
-            'password' => Hash::make($request->password)
-        ]);
-        $token = $user->createToken("api")->plainTextToken;
-        return response()->json(['success' =>true, 'data' => $user,'token'=>$token],201);
-        
-    }
-
-    // --------------------------login-------------------------------------
-    public function login(Request $request){
-        $creadentail = $request->only('email','password');
-        if(Auth::attempt($creadentail)){
-            $user = Auth::user();
-            dd($user);
-            $token = $user->createToken("API-TOKEN")->plainTextToken;
-            return response()->json(['data'=>$token],200);
-        }
-        return response()->json(['messaage' =>'Invalid creadentail'],401);
-    }
+   
 
     // display the specified resource.
     public function show(string $id)
@@ -55,12 +32,7 @@ class UserController extends Controller
         return response()->json(["data"=>true ,"users"=>$user], 200);
     }
 
-    // update the specified resource in storage.
-    public function update(StoreUserRequest $request, string $id)
-    {
-        $user =User::store($request,$id);
-        return response()->json(["data"=>true ,"users"=>$user], 200);
-    }
+    
 
     // remove the specifide resource from storage
     public function destroy(string $id)

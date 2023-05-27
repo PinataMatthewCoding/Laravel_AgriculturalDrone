@@ -27,7 +27,7 @@ class ShowDroneResource extends JsonResource
             "map_id"=>$this->maps,
             "user_id"=>$this->user,
             "location_id"=>$this->location,
-            // "plans"=>$this->plans,
+            "instruction_id"=>$this->instructions,
           
 
             
