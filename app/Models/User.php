@@ -3,21 +3,18 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-<<<<<<< HEAD
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-=======
+
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
+
 use Illuminate\Support\Facades\Hash;
 
 
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
 
->>>>>>> be5c5059756b77d09aa35277a84595feee92e96b
+
 use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
@@ -54,18 +51,11 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
     
-<<<<<<< HEAD
-   
-=======
+
     
 
->>>>>>> be5c5059756b77d09aa35277a84595feee92e96b
     public function drones():HasMany
     {
         return $this->hasMany(Drone::class);
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> be5c5059756b77d09aa35277a84595feee92e96b

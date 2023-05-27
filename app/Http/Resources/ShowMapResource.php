@@ -20,11 +20,6 @@ class ShowMapResource extends JsonResource
             "typeImage"=>$this->typeImage,
             "description"=>$this->description,
             "drone_id"=>$this->drone,
-<<<<<<< HEAD
-=======
-
-            
->>>>>>> be5c5059756b77d09aa35277a84595feee92e96b
         ];
     }
 }

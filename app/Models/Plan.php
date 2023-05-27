@@ -42,39 +42,24 @@ class Plan extends Model
         $plans =self::updateOrCreate(['id'=>$id],$plan);
         return $plans; 
     }
-<<<<<<< HEAD
-=======
 
->>>>>>> be5c5059756b77d09aa35277a84595feee92e96b
 
     public function drones()
     {
         return $this->belongsToMany(Drone::class,'drone_plans')->withTimestamps();
     }
-<<<<<<< HEAD
-=======
 
->>>>>>> be5c5059756b77d09aa35277a84595feee92e96b
     public function locations():BelongsToMany
     {
         return $this->belongsToMany(Location::class,'location_plans');
     }
-<<<<<<< HEAD
-=======
 
 
->>>>>>> be5c5059756b77d09aa35277a84595feee92e96b
     public function drone():BelongsTo
     {
         return $this->belongsTo(Drone::class);
     }
     
-    public function instruction():HasOne
-    {
-        return $this->HasOne(Instruction::class);
-    }
-<<<<<<< HEAD
-=======
+    
 
->>>>>>> be5c5059756b77d09aa35277a84595feee92e96b
 }

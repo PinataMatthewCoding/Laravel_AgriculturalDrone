@@ -24,19 +24,9 @@ class ShowDroneResource extends JsonResource
             "battery"=>$this->battery,
             "playload_cap"=>$this->playload_cap,
             "max_speed"=>$this->max_speed,
-<<<<<<< HEAD
             //================
             "user_id"=>$this->user,
             "location_id"=>$this->location,
-=======
-            "map_id"=>$this->maps,
-            "user_id"=>$this->user,
-            "location_id"=>$this->location,
-            "instruction_id"=>$this->instructions,
-          
-
-            
->>>>>>> be5c5059756b77d09aa35277a84595feee92e96b
         ];
     }
 }

@@ -38,12 +38,9 @@ class Instruction extends Model
     {
         return $this->HasOne(Plan::class);
     }
-<<<<<<< HEAD
 }
-=======
 
 
     
    
-}
->>>>>>> be5c5059756b77d09aa35277a84595feee92e96b
+

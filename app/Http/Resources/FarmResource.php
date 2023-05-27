@@ -18,12 +18,8 @@ class FarmResource extends JsonResource
             "id"=>$this->id,
             "name"=>$this->name,
             "address"=>$this->address,
-<<<<<<< HEAD
             //=================
             "map_id"=>$this->map
-=======
-            // "map_id"=>FarmResource::collection($this->maps)
->>>>>>> be5c5059756b77d09aa35277a84595feee92e96b
         ];
     }
 }

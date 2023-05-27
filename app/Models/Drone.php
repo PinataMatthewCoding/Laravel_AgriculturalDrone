@@ -60,9 +60,6 @@ class Drone extends Model
     {
         return $this->hasMany(Plan::class);
     }
-<<<<<<< HEAD
-}
-=======
 
     public function instructions():HasMany
     {
@@ -73,4 +70,3 @@ class Drone extends Model
 
 
 
->>>>>>> be5c5059756b77d09aa35277a84595feee92e96b
