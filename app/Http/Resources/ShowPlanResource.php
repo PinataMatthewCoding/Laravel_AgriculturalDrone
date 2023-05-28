@@ -15,6 +15,7 @@ class ShowPlanResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
+            "name"=>$this->name,
             "pesticide_type"=>$this->pesticide_type,
             "seed_type"=>$this->seed_type,
             "width"=>$this->weight,

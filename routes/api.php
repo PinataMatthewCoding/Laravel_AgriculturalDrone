@@ -125,15 +125,3 @@ Route::get("/drone/{id}", [DroneController::class, "show"]);
 Route::get("/instructions", [InstructionController::class, "index"]);
 Route::get("/instructions/{id}", [InstructionController::class, "show"]);
 
-
-
-
-
-
-
-
-
-
-
-
-
